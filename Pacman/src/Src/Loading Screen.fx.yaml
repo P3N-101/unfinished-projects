@@ -1,0 +1,192 @@
+"'Loading Screen' As screen":
+    Height: =Max(App.Height, App.DesignHeight)
+    OnVisible: |+
+        =///////////////////////////////////////////////////////////////
+        //
+        //  Start the Loading Screen
+        //
+        //  This starts the Timer, which controls the progress bar
+        //
+        //  If the data Loads before the Progress bar finishes, then
+        //  the user will be happy, and if it finishes just after
+        //  the progress bar, then you've set their expectations
+        //  with the progress bar so they are likely to be more
+        //  accepting of that slight delay.
+        //
+        //  We also set the default loading Text here.
+        //  This text is then updated during each step
+        //  of the Data Loading process.
+        //
+        ///////////////////////////////////////////////////////////////
+        
+        Set(StartLoadingScreenTimer, false); Set(StartLoadingScreenTimer, true);
+        Set(LoadingText, "...");
+        
+        ///////////////////////////////////////////////////////////////
+        //
+        //  Data Loading is moved to the OnTimerStart
+        //
+        //  This guaratees that the navigate to the next screen
+        //  will only happen once the data has been completely loaded
+        //
+        //  The above may not apply to your situation and you may want
+        //  the navigate set to another timer if you don't need the
+        //  loaded data to be available during your Home Screen experience.
+        //
+        ///////////////////////////////////////////////////////////////
+        
+    Orientation: =If('Loading Screen'.Width < 'Loading Screen'.Height, Layout.Vertical, Layout.Horizontal)
+    Size: =1 + CountRows(App.SizeBreakpoints) - CountIf(App.SizeBreakpoints, Value >= 'Loading Screen'.Width)
+    Width: =Max(App.Width, App.DesignWidth)
+
+    img_Background_LS As image:
+        AccessibleLabel: ="a picture of a mountain used as a background imabe"
+        BorderColor: =ColorFade(img_Background_LS.Fill, -20%)
+        Fill: =RGBA(0,0,0,0)
+        FocusedBorderColor: =img_Background_LS.BorderColor
+        Height: =768
+        HoverBorderColor: =ColorFade(img_Background_LS.BorderColor, 20%)
+        HoverFill: =ColorFade(img_Background_LS.Fill, 20%)
+        Image: ='20210717_211416'
+        ImagePosition: =ImagePosition.Stretch
+        OnSelect: |-
+            =Launch("https://www.pexels.com/public-domain-images/")
+        PaddingRight: =31.36
+        PaddingTop: =31.36
+        PressedBorderColor: =ColorFade(img_Background_LS.BorderColor, -20%)
+        PressedFill: =ColorFade(img_Background_LS.Fill, -20%)
+        Transparency: =0.5-(tmr_LoadingAction_LS.Value / tmr_LoadingAction_LS.Duration)
+        Width: =1366
+        X: =0.00
+        Y: =0*1
+        ZIndex: =1
+
+    lbl_LoadingText_LS As label:
+        Align: =Align.Center
+        Color: =ThisTheme.Color2Text
+        Fill: =RGBA( 0,0,0, 25%)
+        FocusedBorderThickness: =1
+        Height: =lbl_LoadingBarOutline_LS.Height*2 + 15
+        PaddingBottom: =10
+        PaddingLeft: =10
+        PaddingRight: =31.36
+        PaddingTop: =31.36
+        Size: =28
+        TabIndex: =0
+        Text: =lbl_LoadingBarOutline_LS.Value & "%" & Char(10) & LoadingText
+        VerticalAlign: =VerticalAlign.Bottom
+        Width: =1321
+        X: =14
+        Y: =lbl_LoadingBarOutline_LS.Y -10
+        ZIndex: =2
+
+    lbl_LoadingBarOutline_LS As slider:
+        AccessibleLabel: ="n/a"
+        BorderColor: =ControlsTheme.LabelBorderColor
+        Default: =(tmr_LoadingAction_LS.Value/tmr_LoadingAction_LS.Duration)*100
+        DisplayMode: =DisplayMode.View
+        HandleActiveFill: =ThisTheme.Color2Text
+        HandleFill: =Transparent
+        HandleHoverFill: =ThisTheme.Color2Text
+        HandleSize: =10
+        Height: =60
+        RailFill: =Transparent
+        RailHoverFill: =ColorFade(ThisTheme.Color1, 20%)
+        RailThickness: |
+            =10
+        ShowValue: =false
+        ValueFill: =DarkGreen//ThisTheme.Color2
+        ValueHoverFill: =Self.ValueFill
+        Width: =1149
+        X: =87
+        Y: =502
+        ZIndex: =3
+
+    tmr_LoadingAction_LS As timer:
+        AutoStart: =true
+        Duration: =5000
+        OnTimerEnd: |-
+            =///////////////////////////////////////////////////////////////
+            //
+            //  For Demo purposes I have the navigate here
+            //
+            //  This idea here is to give the user 5 seconds of a loading screen max,
+            //  With Text updating below it with every action you do (in this screen's
+            //  OnVisible), this keeps the user occupied while the data loads instead
+            //  of just watching a 'spinner' with no indication or information
+            //
+            //  If you need the user to wait until all of the data is loaded
+            //  then just keep the 'false' value below
+            //
+            ///////////////////////////////////////////////////////////////
+            Navigate('Game Screen', ScreenTransition.Fade);
+            
+            
+            
+            //false
+        OnTimerStart: |-
+            =Set(Color4JSON,JSON(ThisTheme.Color4));
+            ///////////////////////////////////////////////////////////////
+            Set(score,0);
+            UpdateContext({LoadingText:"Creating Collections"});
+            
+            ClearCollect(colPowerPills,powerpills);
+            ClearCollect(colPowerPillsNotEaten,powerpills);
+            ClearCollect(colPills,pill);
+            ClearCollect(colPillsNotEaten,colPills);
+            
+            ClearCollect(ghosts,{ID:1,name:"ghost1",location:"home"},{ID:2,name:"ghost2",location:"home"},{ID:3,name:"ghost3",location:"home"},{ID:4,name:"ghost4",location:"home"});
+            ClearCollect(fruits,{name:"cherry",value:5000},{name:"melon",value:10000},{name:"pineapple",value:25000},{name:"chilli",value:50000});
+            
+            
+            //Set(gbl_menu_default,LookUp(col_theme_editor,ID = 3));
+            ///////////////////////////////////////////////////////////////
+            //
+            //  Navigate to the 'Home' screen once data is loaded
+            //
+            //  Instead of having our timer do the navigation, we have
+            //  the app navigate once it's completed loading the data 
+            //  (i.e once the loading steps above have completed)
+            //
+            //  When the timer completes, it stops, making the
+            //  loading bar look like its at 100% and waiting to navigate.
+            //  This is better from a user perspective for delays,
+            //  Feedback I've received is that they believe the App is
+            //  'thinking' after loading all of the data.
+            //
+            ///////////////////////////////////////////////////////////////
+            
+            Navigate('Game Screen', ScreenTransition.Fade);
+            
+            ///////////////////////////////////////////////////////////////
+            //
+            //  Reset the timer
+            //
+            //  This is purely for demo purposes,
+            //  and so is the arrow on the next screen,
+            //  as you'd not normally have a user
+            //  come back to the loading screen...
+            //
+            ///////////////////////////////////////////////////////////////
+            //Reset(tmr_LoadingScreen);
+            0+0;
+        PaddingRight: =15.69
+        PaddingTop: =15.69
+        Size: =62.74
+        Start: =StartLoadingScreenTimer
+        TabIndex: =-1
+        Tooltip: ="This should be hidden - this loads your data and then navigates away"
+        Visible: =false
+        Width: =501.96
+        X: =390
+        ZIndex: =4
+
+    Image1 As image:
+        Image: ='cropped-logo-red'
+        PaddingRight: =31.36
+        PaddingTop: =31.36
+        Width: =956.85
+        X: =196
+        Y: =642
+        ZIndex: =5
+

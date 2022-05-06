@@ -1,0 +1,2106 @@
+cmp_Header As CanvasComponent:
+    SetAccessibleTheme(CurrentTheme As Record):
+        CurrentTheme:
+            Default: |-
+                ={
+                        Name:                            "MonoChrome Dark",
+                        Color1:                          RGBA( 90,  90,  90, 1),
+                        Color2:                          RGBA(130, 130, 130, 1),
+                        Color3:                          RGBA(190, 190, 190, 1),
+                        Color1Text:                      RGBA(245, 245, 245, 1),
+                        Color2Text:                      RGBA(245, 245, 245, 1),
+                        Color3Text:                      RGBA( 15,  15,  15, 1),
+                
+                        defaultTextColor:                RGBA(245, 245, 245, 1),
+                        
+                        Font:                            Font.'Segoe UI',
+                        FontSize:                        14,
+                
+                        DarkMode:                        true
+                }
+        ThisProperty:
+            Default: |-
+                =If(
+                    cmp_Header.CMPThisTheme.Name <> Blank()
+                    &&
+                    !IsBlank(cmp_Header.CMPThisTheme.Name)
+                    ,
+                    If(
+                        cmp_Header.CMPThisTheme.Name <> "MonoChrome Dark",
+                        Set(ThisCurrentThemeBackup, cmp_Header.CMPThisTheme);
+                        Set(ThisCurrentControlsThemeBackup, cmp_Header.CMPControlsTheme);
+                        Set(ThisTheme, 
+                                        {
+                                            Name:                            "MonoChrome Dark",
+                                            Color1:                          RGBA( 90,  90,  90, 1),
+                                            Color2:                          RGBA(130, 130, 130, 1),
+                                            Color3:                          RGBA(190, 190, 190, 1),
+                                            Color1Text:                      RGBA(245, 245, 245, 1),
+                                            Color2Text:                      RGBA(245, 245, 245, 1),
+                                            Color3Text:                      RGBA( 15,  15,  15, 1),
+                
+                                            defaultTextColor:                RGBA(245, 245, 245, 1),
+                                            
+                                            Font:                            Font.'Segoe UI',
+                                            FontSize:                        14,
+                
+                                            DarkMode:                        true
+                                        }
+                        );
+                        Set(
+                            ControlsTheme,
+                            {
+                
+                                LabelTextColor:                     ThisTheme.defaultTextColor,
+                                LabelFill:                          Transparent,
+                                LabelBorderColor:                   ThisTheme.Color2,
+                                LabelFont:                          ThisTheme.Font,
+                
+                                ButtonColor:                        ThisTheme.Color2Text,
+                                ButtonFill:                         ThisTheme.Color2,
+                                ButtonBorderColor:                  ThisTheme.Color1,
+                                ButtonHoverColor:                   ColorFade(ThisTheme.Color2Text, 20%),
+                                ButtonHoverFill:                    ColorFade(ThisTheme.Color2,     20%),
+                                ButtonHoverBorderColor:             ColorFade(ThisTheme.Color1,     20%),
+                                ButtonPressedColor:                 ThisTheme.Color2,
+                                ButtonPressedFill:                  ThisTheme.Color2Text,
+                                ButtonPressedBorderColor:           ThisTheme.Color2,
+                                ButtonFont:                         ThisTheme.Font,
+                
+                                InputTextColor:                     ThisTheme.Color1Text,
+                                InputFill:                          ThisTheme.Color1,
+                                InputBorderColor:                   ThisTheme.Color2,
+                                InputHoverColor:                    ColorFade(ThisTheme.Color1Text, 20%),
+                                InputHoverFill:                     ColorFade(ThisTheme.Color1, 20%),
+                                InputHoverBorderColor:              ColorFade(ThisTheme.Color2, 20%),
+                                InputPressedColor:                  ThisTheme.Color1Text,
+                                InputPressedFill:                   ThisTheme.Color1,
+                                InputPressedBorderColor:            ColorFade(ThisTheme.Color2, 20%),
+                                InputFont:                          ThisTheme.Font,
+                                InputDelayOutput:                   true,
+                
+                                PenInputInkColor:                   ThisTheme.defaultTextColor,
+                                PenInputBorderColor:                ThisTheme.defaultTextColor,
+                                PenInputInkSize:                    2,
+                                PenInputBackground:                 Transparent,
+                
+                                DropdownTextColor:                  ThisTheme.Color1Text,
+                                DropdownFill:                       ThisTheme.Color1,
+                                DropdownBorderColor:                ThisTheme.Color2,
+                                DropdownHoverColor:                 ColorFade(ThisTheme.Color1Text, 20%),
+                                DropdownHoverFill:                  ColorFade(ThisTheme.Color1, 20%),
+                                DropdownHoverBorderColor:           ColorFade(ThisTheme.Color2, 20%),
+                                DropdownPressedColor:               ThisTheme.Color1,
+                                DropdownPressedFill:                ThisTheme.Color1Text,
+                                DropdownPressedBorderColor:         ColorFade(ThisTheme.Color2, -20%),
+                                DropdownChevronBackground:          ThisTheme.Color2,
+                                DropdownChevronFill:                ThisTheme.Color2Text,
+                                DropdownChevronHoverBackground:     ColorFade(ThisTheme.Color2, 20%),
+                                DropdownChevronHoverFill:           ColorFade(ThisTheme.Color2Text, 20%),
+                                DropdownSelectionColor:             ThisTheme.Color3Text,
+                                DropdownSelectionFill:              ThisTheme.Color3,
+                                DropdownFont:                       ThisTheme.Font,
+                
+                                ComboBoxTextColor:                  ThisTheme.Color1Text,
+                                ComboBoxFill:                       ThisTheme.Color1,
+                                ComboBoxBorderColor:                ThisTheme.Color2,
+                                ComboBoxHoverColor:                 ColorFade(ThisTheme.Color1Text, 20%),
+                                ComboBoxHoverFill:                  ColorFade(ThisTheme.Color1, 20%),
+                                ComboBoxHoverBorderColor:           ColorFade(ThisTheme.Color2, 20%),
+                                ComboBoxPressedColor:               ThisTheme.Color2Text,
+                                ComboBoxPressedFill:                ThisTheme.Color2,
+                                ComboBoxPressedBorderColor:         ColorFade(ThisTheme.Color2, -20%),
+                                ComboBoxSelectionColor:             ThisTheme.Color3Text,
+                                ComboBoxSelectionFill:              ThisTheme.Color3,
+                                ComboBoxChevronBackground:          ThisTheme.Color2,
+                                ComboBoxChevronFill:                ThisTheme.Color2Text,
+                                ComboBoxChevronHoverBackground:     ColorFade(ThisTheme.Color2, 20%),
+                                ComboBoxChevronHoverFill:           ColorFade(ThisTheme.Color2Text, 20%),
+                                ComboBoxFont:                       ThisTheme.Font,
+                                ComboBoxMoreItemsButtonColor:       ThisTheme.Color2,
+                                
+                                DatePickerColor:                    ThisTheme.Color1Text,
+                                DatePickerFill:                     ThisTheme.Color1,
+                                DatePickerBorderColor:              ThisTheme.Color2,
+                                DatePickerIconFill:                 ThisTheme.Color2Text,
+                                DatePickerIconBackground:           ThisTheme.Color2,
+                                DatePickerSelectedDateFill:         ThisTheme.Color2,
+                                DatePickerHoverDateFill:            ThisTheme.Color3Text,
+                                DatePickerHeaderFill:               ThisTheme.Color3,
+                                DatePickerFont:                     ThisTheme.Font,
+                                //
+                                // Sancho's note:
+                                // Tried to template these but IDE import only picks up design properties currently :(
+                                //
+                                // DatePickerStartOfWeek:          StartOfWeek.Monday,
+                                // DatePickerFormat:               DateTimeFormat.ShortDate,
+                                // DatePickerDefaultDate:          Today(),
+                                // DatePickerDateTimeZone:         DateTimeZone.Local,
+                                // DatePickerLanguage:             "en-GB",
+                
+                
+                                ListBoxTextColor:                   ThisTheme.Color1Text,
+                                ListBoxFill:                        ThisTheme.Color1,
+                                ListBoxBorderColor:                 ThisTheme.Color2,
+                                ListBoxHoverColor:                  ColorFade(ThisTheme.Color1Text, 20%),
+                                ListBoxHoverFill:                   ColorFade(ThisTheme.Color1, 20%),
+                                ListBoxHoverBorderColor:            ColorFade(ThisTheme.Color2, 20%),
+                                ListBoxPressedColor:                ThisTheme.Color2Text,
+                                ListBoxPressedFill:                 ThisTheme.Color2,
+                                ListBoxPressedBorderColor:          ColorFade(ThisTheme.Color2, -20%),       
+                                ListBoxSelectionColor:              ThisTheme.Color3Text,
+                                ListBoxSelectionFill:               ThisTheme.Color3,
+                                ListBoxFont:                        ThisTheme.Font,
+                                ListBoxItemPaddingLeft:             10,
+                
+                                CheckBoxTextColor:                  ThisTheme.defaultTextColor,
+                                CheckBoxInnerBackground:            If(
+                                                                        ThisTheme.DarkMode,
+                                                                        ColorFade(ThisTheme.Color1, -50%),
+                                                                        ColorFade(ThisTheme.Color1, 50%)
+                                                                    ),
+                                CheckBoxBorderColor:                ThisTheme.Color2,
+                                CheckBoxHoverColor:                 ColorFade(ThisTheme.defaultTextColor, 20%),
+                                CheckBoxHoverFill:                  ColorFade(Transparent, 20%),
+                                CheckBoxHoverBorderColor:           ColorFade(ThisTheme.Color2, 20%),
+                                CheckBoxPressedColor:               ColorFade(ThisTheme.defaultTextColor, -20%),
+                                CheckBoxPressedFill:                ColorFade(Transparent, -20%),
+                                CheckBoxPressedBorderColor:         ColorFade(ThisTheme.Color2, -20%),
+                                CheckBoxOutsideBorderColor:         ThisTheme.Color2,
+                                CheckBoxFill:                       Transparent,
+                                CheckBoxCheckmarkFill:              ThisTheme.defaultTextColor,
+                                CheckBoxFont:                       ThisTheme.Font,
+                                CheckBoxSize:                       40,
+                                
+                                RadioTextColor:                     ThisTheme.defaultTextColor,
+                                RadioOutsideFill:                   Transparent,
+                                RadioOutsideBorderColor:            ThisTheme.Color2,
+                                RadioHoverColor:                    ThisTheme.Color2,
+                                RadioHoverFill:                     Transparent,
+                                RadioPressedColor:                  ThisTheme.defaultTextColor,
+                                RadioPressedFill:                   Transparent,
+                                RadioBorderColor:                   ThisTheme.Color2,
+                                RadioBackgroundFill:                If(ThisTheme.DarkMode,
+                                                                        ColorFade(ThisTheme.Color1, -50%),
+                                                                        ColorFade(ThisTheme.Color1, 50%)
+                                                                    ),
+                                RadioSelectionFill:                 ThisTheme.defaultTextColor,
+                                RadioFont:                          ThisTheme.Font,
+                                RadioSize:                          40,
+                                RadioLayout:                        Layout.Horizontal,
+                                
+                                ToggleTextColor:                    ThisTheme.defaultTextColor,
+                                ToggleBorderColor:                  ThisTheme.Color2,
+                                ToggleHandleFill:                   ThisTheme.Color2,
+                                ToggleFalseFill:                    ThisTheme.Color1,
+                                ToggleTrueFill:                     ThisTheme.Color3,
+                                ToggleFalseHoverFill:               ColorFade(ThisTheme.Color1, 20%),
+                                ToggleTrueHoverFill:                ColorFade(ThisTheme.Color3, 20%),
+                                ToggleHoverBorderColor:             ColorFade(ThisTheme.Color2, 20%),
+                                TogglePressedBorderColor:           ColorFade(ThisTheme.Color2, -20%),
+                                ToggleFont:                         ThisTheme.Font,
+                                ToggleTextPosition:                 TextPosition.Left,
+                
+                                SliderBorderColor:                  ThisTheme.Color2,
+                                SliderHandleFill:                   White,
+                                SliderBackground:                   ThisTheme.Color3,
+                                SliderValueFill:                    ThisTheme.Color2,
+                                SliderHandleHoverFill:              ColorFade(White, 20%),
+                                SliderHandleActiveFill:             ColorFade(White, 40%),
+                                SliderRailHoverFill:                ColorFade(ThisTheme.Color3,  20%),
+                                SliderValueHoverFill:               ColorFade(ThisTheme.Color2,  20%),
+                                SliderHoverBorderColor:             ColorFade(ThisTheme.Color2,  20%),
+                                SliderPressedBorderColor:           ColorFade(ThisTheme.Color2, -20%),
+                                SliderRailThickness:                24,
+                                SliderHandleSize:                   24,
+                
+                                RatingItemFill:                     ThisTheme.Color2,
+                                RatingFill:                         Transparent,
+                                RatingBorderColor:                  ThisTheme.Color2,
+                
+                                TimerTextColor:                     ThisTheme.Color1Text,
+                                TimerFill:                          ThisTheme.Color1,
+                                TimerBorderColor:                   ColorFade(ThisTheme.Color1, -20%),
+                                TimerHoverColor:                    ColorFade(ThisTheme.Color1Text, 20%),
+                                TimerHoverFill:                     ColorFade(ThisTheme.Color1,  20%),
+                                TimerHoverBorderColor:              ColorFade(ThisTheme.Color1,  20%),
+                                TimerPressedColor:                  ThisTheme.Color1,
+                                TimerPressedFill:                   ThisTheme.Color1Text,
+                                TimerPressedBorderColor:            ThisTheme.Color1,
+                                TimerFont:                          ThisTheme.Font,
+                                
+                                ImageFill:                          Transparent,
+                                ImageBorderColor:                   Transparent,
+                                ImageHoverFill:                     Transparent,
+                                ImageHoverBorderColor:              Transparent,
+                                ImagePressedFill:                   Transparent,
+                                ImagePressedBorderColor:            Transparent,
+                
+                                CameraBorderColor:                  ThisTheme.Color2,
+                
+                                BarcodeColor:                       ThisTheme.Color1Text,
+                                BarcodeFill:                        ThisTheme.Color1,
+                                BarcodeBorderColor:                 ThisTheme.Color2,
+                                BarcodeHoverColor:                  ColorFade(ThisTheme.Color1Text, 20%),
+                                BarcodeHoverFill:                   ColorFade(ThisTheme.Color1, 20%),
+                                BarcodeHoverBorderColor:            ColorFade(ThisTheme.Color2, 20%),
+                                BarcodePressedColor:                ThisTheme.Color1,
+                                BarcodePressedFill:                 ThisTheme.Color1Text,
+                                BarcodePressedBorderColor:          ThisTheme.Color1,
+                                BarcodeFont:                        ThisTheme.Font,
+                                
+                                VideoFill:                          ThisTheme.Color1,
+                                VideoBorderColor:                   ThisTheme.Color2,
+                
+                                StreamColor:                        ThisTheme.defaultTextColor,
+                                StreamFill:                         Transparent,
+                                StreamBorderColor:                  ThisTheme.Color2,
+                
+                                AudioFill:                          ThisTheme.Color1,
+                                AudioBorderColor:                   ColorFade(ThisTheme.Color1, -20%),
+                
+                                MicrophoneColor:                    ThisTheme.Color1Text,
+                                MicrophoneFill:                     ThisTheme.Color1,
+                                MicrophoneBorderColor:              ColorFade(ThisTheme.Color1, -20%),
+                                MicrophoneHoverColor:               ColorFade(ThisTheme.Color1Text, 20%),
+                                MicrophoneHoverFill:                ColorFade(ThisTheme.Color1, 20%),
+                                MicrophoneHoverBorderColor:         ThisTheme.Color1,
+                                MicrophonePressedColor:             ColorFade(ThisTheme.Color1Text, -20%),
+                                MicrophonePressedFill:              ColorFade(ThisTheme.Color1, -20%),
+                                MicrophonePressedBorderColor:       ColorFade(ThisTheme.Color1, -40%),
+                
+                                AddPictureColor:                    ThisTheme.Color1Text,
+                                AddPictureFill:                     ThisTheme.Color1,
+                                AddPictureBorderColor:              ThisTheme.Color2,
+                                AddPictureHoverColor:               ThisTheme.Color1Text,
+                                AddPictureHoverFill:                ColorFade(ThisTheme.Color1, 20%),
+                                AddPictureHoverBorderColor:         ColorFade(ThisTheme.Color2, 20%),
+                                AddPicturePressedColor:             ThisTheme.Color1Text,
+                                AddPicturePressedFill:              ColorFade(ThisTheme.Color1, -20%),
+                                AddPicturePressedBorderColor:       ColorFade(ThisTheme.Color2, -20%),
+                                AddPictureFont:                     ThisTheme.Font,
+                
+                                ImportColor:                        ThisTheme.Color1Text,
+                                ImportFill:                         ThisTheme.Color1,
+                                ImportBorderColor:                  ColorFade(ThisTheme.Color1, -20%),
+                                ImportFont:                         ThisTheme.Font,
+                                ImportHoverColor:                   ColorFade(ThisTheme.Color1Text, 20%),
+                                ImportHoverFill:                    ColorFade(ThisTheme.Color1, 20%),
+                                ImportHoverBorderColor:             ThisTheme.Color1,
+                                ImportPressedColor:                 ThisTheme.Color1Text,
+                                ImportPressedFill:                  ColorFade(ThisTheme.Color1, -20%),
+                                ImportPressedBorderColor:           ColorFade(ThisTheme.Color1, -40%),
+                
+                                ExportColor:                        ThisTheme.Color1Text,
+                                ExportFill:                         ThisTheme.Color1,
+                                ExportBorderColor:                  ColorFade(ThisTheme.Color1, -20%),
+                                ExportFont:                         ThisTheme.Font,
+                                ExportHoverColor:                   ColorFade(ThisTheme.Color1Text, 20%),
+                                ExportHoverFill:                    ColorFade(ThisTheme.Color1, 20%),
+                                ExportHoverBorderColor:             ThisTheme.Color1,
+                                ExportPressedColor:                 ThisTheme.Color1Text,
+                                ExportPressedFill:                  ColorFade(ThisTheme.Color1, -20%),
+                                ExportPressedBorderColor:           ColorFade(ThisTheme.Color1, -40%),
+                
+                                ChartLegendColor:                   ThisTheme.defaultTextColor,
+                                ChartLegendFont:                    ThisTheme.Font,
+                
+                                /////////////////
+                                //
+                                // Gallery Items
+                                //
+                                GalleryFill:                        RGBA(0,0,0,0),
+                                GalleryBorderColor:                 ThisTheme.Color2,
+                                //
+                                // Gallery Title and Subtitle
+                                //
+                                GallerytitleLabelColor:             ThisTheme.Color3,
+                                GallerysubtitleLabelColor:          ThisTheme.defaultTextColor,
+                                GallerytitleLabelFont:              ThisTheme.Font,
+                                GallerysubtitleLabelFont:           ThisTheme.Font,
+                                //
+                                // Body content label in Flexible Height Gallery
+                                //
+                                GallerycontentLabelColor:           ThisTheme.defaultTextColor,
+                                GallerycontentLabelFont:            ThisTheme.Font,
+                                //
+                                /////////////////
+                
+                                /////////////////
+                                //
+                                // Icons
+                                //
+                                // This will apply to all icons
+                                // (excluding new screen icons used as BGs)
+                                //
+                                // IconFill is also used for the background shape of
+                                // the New Screen headers in: List
+                                //
+                                IconFill:                           ThisTheme.Color3,
+                                IconHoverFill:                      ThisTheme.Color3Text,
+                                IconPressedFill:                    ThisTheme.Color1,
+                                // Background set to transparent by default to preserve New Screen-based icons
+                                IconBackground:                     Transparent,
+                                IconHoverBackground:                Transparent,
+                                IconPressedBackground:              Transparent,
+                                IconBorderColor:                    ColorFade(ThisTheme.Color3, -20%),
+                                IconHoverBorderColor:               ThisTheme.Color3,
+                                IconPressedBorderColor:             ColorFade(ThisTheme.Color3, -40%),
+                                
+                
+                                AttachmentTextColor:                ThisTheme.Color1Text,
+                                AttachmentFill:                     ThisTheme.Color1,
+                                AttachmentBorderColor:              ThisTheme.Color2,
+                                AttachmentHoverColor:               ColorFade(ThisTheme.Color1Text, 20%),
+                                AttachmentHoverFill:                ColorFade(ThisTheme.Color1, 20%),
+                                AttachmentHoverBorderColor:         ColorFade(ThisTheme.Color2, 20%),
+                                AttachmentFont:                     ThisTheme.Font,
+                                AttachmentPressedColor:             ThisTheme.Color2Text,
+                                AttachmentPressedFill:              ThisTheme.Color2,
+                                AttachmentItemColor:                ThisTheme.Color3Text,
+                                AttachmentItemFill:                 ThisTheme.Color3,
+                                AttachmentItemHoverColor:           ColorFade(ThisTheme.Color3Text, 20%),
+                                AttachmentItemHoverFill:            ColorFade(ThisTheme.Color3, 20%),
+                
+                                /////////////////
+                                //
+                                // Forms
+                                //
+                                EditFormBorderColor:                ThisTheme.Color2,
+                                EditFormFill:                       If( 
+                                                                        ThisTheme.DarkMode,
+                                                                        ColorFade(ThisTheme.Color1, -50%),
+                                                                        ColorFade(ThisTheme.Color1, 50%)
+                                                                    ),
+                                ViewFormBorderColor:                ThisTheme.Color2,
+                                ViewFormFill:                       If(
+                                                                        ThisTheme.DarkMode,
+                                                                        ColorFade(ThisTheme.Color1, -50%),
+                                                                        ColorFade(ThisTheme.Color1, 50%)
+                                                                    ),
+                                // Form Title and * fields
+                                FormTitleLabelColor:                ThisTheme.Color3,
+                                FormTitleLabelFont:                 ThisTheme.Font,
+                
+                                /////////////////
+                                //
+                                // Screen
+                                //
+                                ScreenBackground:                   If( 
+                                                                        ThisTheme.DarkMode,
+                                                                        ColorFade(ThisTheme.Color1, -50%),
+                                                                        ColorFade(ThisTheme.Color1, 50%)
+                                                                    ),
+                
+                                /////////////////
+                                //
+                                // Data Table
+                                //
+                                //
+                                // NotUsed
+                                DataTableColor1:                    ThisTheme.Color1,
+                                DataTableColor2:                    ThisTheme.Color2,
+                                // Border Lines between headers
+                                DataTableColor3:                    ThisTheme.Color3,
+                                //
+                                DataTableColor:                     ThisTheme.Color1Text,
+                                DataTableFill:                      ThisTheme.Color1,
+                                DataTableColorInverted:             ThisTheme.Color3Text,
+                                DataTableSelectedColor:             ThisTheme.Color3Text,
+                                DataTableSelectedFill:              ThisTheme.Color3,
+                                DataTableHoverColor:                ThisTheme.Color2Text,
+                                DataTableHoverFill:                 ThisTheme.Color2,
+                                DataTableBorderColor:               ThisTheme.Color2,
+                                DataTableInputFill:                 ThisTheme.Color1,
+                                DataTableFont:                      ThisTheme.Font,
+                                DataTableHeadingFont:               ThisTheme.Font,
+                                DataTableHeadingColor:              ThisTheme.Color2Text,
+                                DataTableHeadingFill:               ThisTheme.Color2,
+                                DataTableFontWeight:                FontWeight.Normal,
+                                DataTableHeadingFontWeight:         FontWeight.Semibold,
+                
+                                /////////////////
+                                //
+                                // PDFViewer & PowerBI
+                                //
+                                PdfViewerFill:                      ColorFade(ThisTheme.Color1, -50%),
+                                PdfViewerBorderColor:               ThisTheme.Color2,
+                                PowerBIBorderColor:                 ThisTheme.Color2,
+                                
+                                //////////////////////////////////////////////////
+                                //                                              //
+                                //  These apply to the Insert>New Screen items  //
+                                //                                              //
+                                //////////////////////////////////////////////////
+                                //
+                                // Title Label on New Screen Headers
+                                //
+                                invertedBkgHeaderLabelColor:        ThisTheme.Color2Text,
+                                //
+                                // New Screen Header background shape for:
+                                // Scrollable, Email, People, Meeting,
+                                // 
+                                // also selected tab shape colour on Meeting screen
+                                // see: IconFill also used for other new screen header shapes
+                                //
+                                IconFillInverted:                   ThisTheme.Color2,
+                                //
+                                // Label on Success Screen, Tutorial Screen
+                                // To / Subject / Message Title on Email screen
+                                // SubTitle label on PeopleBrowseGallery on Email Screen
+                                // Attendees/Subject/Message labels on Meeting screen
+                                // No Times/Locations labels on Schedule tab of Meeting Screen
+                                // All Left-side labels, and right-side time labels on Calendar screen
+                                // ALSO:
+                                // SubHeader Text Colour on Calendar Screen - NB this is same as BG colour
+                                // SubHeader Text Colour on Schedule tab of Meeting screen - NB this is same as BG colour
+                                //
+                                basicNoSizeLabelColor:              ThisTheme.Color3,
+                                //
+                                // Tick on Success Screen
+                                // Send Icon Color on Email Screen
+                                //
+                                invertedBkgHeaderIconColor:         ThisTheme.Color3Text,
+                                //
+                                // Title label and icon color in PeopleGallery on Email Screen, People Screen and Meeting Screen
+                                //
+                                basicNoSizeInvertedBkgLabelColor:   ThisTheme.Color3Text,
+                                //
+                                // Invite & Schedule tab header label on Meeting screen
+                                // Rooms list name label on Schedule tab on Meeting Screen
+                                //
+                                basicNoSizeWeightColorLabelColor:   ThisTheme.defaultTextColor
+                            }
+                        );
+                        ,
+                        Set(ThisTheme, ThisCurrentThemeBackup);
+                       // Set(ControlsTheme, ThisCurrentControlsThemeBackup);
+                
+                        Set(ControlsTheme,
+                            {
+                                LabelTextColor:                 If( IsBlankOrError(ThisCurrentControlsThemeBackup.LabelTextColor),
+                                                                    ThisTheme.defaultTextColor,
+                                                                    ThisCurrentControlsThemeBackup.LabelTextColor),
+                                LabelFill:                      If( IsBlankOrError(ThisCurrentControlsThemeBackup.LabelFill),
+                                                                    Transparent,
+                                                                    ThisCurrentControlsThemeBackup.LabelFill),
+                                LabelBorderColor:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.LabelBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.LabelBorderColor),
+                                LabelFont:                      If( IsBlankOrError(ThisCurrentControlsThemeBackup.LabelFont),
+                                                                    ThisTheme.Font,
+                                                                    ThisCurrentControlsThemeBackup.LabelFont),
+                                ButtonColor:                    If( IsBlankOrError(ThisCurrentControlsThemeBackup.ButtonColor),
+                                                                    ThisTheme.Color2Text,
+                                                                    ThisCurrentControlsThemeBackup.ButtonColor),
+                                ButtonFill:                     If( IsBlankOrError(ThisCurrentControlsThemeBackup.ButtonFill),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.ButtonFill),
+                                ButtonBorderColor:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.ButtonBorderColor),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.ButtonBorderColor),
+                                ButtonHoverColor:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.ButtonHoverColor),
+                                                                    ColorFade(ThisTheme.Color2Text, 20%),
+                                                                    ThisCurrentControlsThemeBackup.ButtonHoverColor),
+                                ButtonHoverFill:                If( IsBlankOrError(ThisCurrentControlsThemeBackup.ButtonHoverFill),
+                                                                    ColorFade(ThisTheme.Color2,20%),
+                                                                    ThisCurrentControlsThemeBackup.ButtonHoverFill),
+                                ButtonHoverBorderColor:         If( IsBlankOrError(ThisCurrentControlsThemeBackup.ButtonHoverBorderColor),
+                                                                    ColorFade(ThisTheme.Color1, 20%),
+                                                                    ThisCurrentControlsThemeBackup.ButtonHoverBorderColor),
+                                ButtonPressedColor:             If( IsBlankOrError(ThisCurrentControlsThemeBackup.ButtonPressedColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.ButtonPressedColor),
+                                ButtonPressedFill:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.ButtonPressedFill),
+                                                                    ThisTheme.Color2Text,
+                                                                    ThisCurrentControlsThemeBackup.ButtonPressedFill),
+                                ButtonPressedBorderColor:       If( IsBlankOrError(ThisCurrentControlsThemeBackup.ButtonPressedBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.ButtonPressedBorderColor),
+                                ButtonFont:                     If( IsBlankOrError(ThisCurrentControlsThemeBackup.ButtonFont),
+                                                                    ThisTheme.Font,
+                                                                    ThisCurrentControlsThemeBackup.ButtonFont),
+                
+                                InputTextColor:                 If( IsBlankOrError(ThisCurrentControlsThemeBackup.InputTextColor),
+                                                                    ThisTheme.Color1Text,
+                                                                    ThisCurrentControlsThemeBackup.InputTextColor),
+                                InputFill:                      If( IsBlankOrError(ThisCurrentControlsThemeBackup.InputFill),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.InputFill),
+                                InputBorderColor:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.InputBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.InputBorderColor),
+                                InputHoverColor:                If( IsBlankOrError(ThisCurrentControlsThemeBackup.InputHoverColor),
+                                                                    ColorFade(ThisTheme.Color1Text, 20%),
+                                                                    ThisCurrentControlsThemeBackup.InputHoverColor),
+                                InputHoverFill:                 If( IsBlankOrError(ThisCurrentControlsThemeBackup.InputHoverFill),
+                                                                    ColorFade(ThisTheme.Color1, 20%),
+                                                                    ThisCurrentControlsThemeBackup.InputHoverFill),
+                                InputHoverBorderColor:          If( IsBlankOrError(ThisCurrentControlsThemeBackup.InputHoverBorderColor),
+                                                                    ColorFade(ThisTheme.Color2, 20%),
+                                                                    ThisCurrentControlsThemeBackup.InputHoverBorderColor),
+                                InputPressedColor:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.InputPressedColor),
+                                                                    ThisTheme.Color1Text,
+                                                                    ThisCurrentControlsThemeBackup.InputPressedColor),
+                                InputPressedFill:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.InputPressedFill),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.InputPressedFill),
+                                InputPressedBorderColor:        If( IsBlankOrError(ThisCurrentControlsThemeBackup.InputPressedBorderColor),
+                                                                    ColorFade(ThisTheme.Color2, 20%),
+                                                                    ThisCurrentControlsThemeBackup.InputPressedBorderColor),
+                                InputFont:                      If( IsBlankOrError(ThisCurrentControlsThemeBackup.InputFont),
+                                                                    ThisTheme.Font,
+                                                                    ThisCurrentControlsThemeBackup.InputFont),
+                                InputDelayOutput:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.InputDelayOutput),
+                                                                    true,
+                                                                    ThisCurrentControlsThemeBackup.InputDelayOutput),
+                
+                                PenInputInkColor:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.PenInputInkColor),
+                                                                    ThisTheme.defaultTextColor,
+                                                                    ThisCurrentControlsThemeBackup.PenInputInkColor),
+                                PenInputBorderColor:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.PenInputBorderColor),
+                                                                    ThisTheme.defaultTextColor,
+                                                                    ThisCurrentControlsThemeBackup.PenInputBorderColor),
+                                PenInputInkSize:                If( IsBlankOrError(ThisCurrentControlsThemeBackup.PenInputInkSize),
+                                                                    2,
+                                                                    ThisCurrentControlsThemeBackup.PenInputInkSize),
+                                PenInputBackground:             If( IsBlankOrError(ThisCurrentControlsThemeBackup.PenInputBackground),
+                                                                    RGBA(0,0,0,0),
+                                                                    ThisCurrentControlsThemeBackup.PenInputBackground),
+                
+                                DropdownTextColor:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.DropdownTextColor),
+                                                                    ThisTheme.Color1Text,
+                                                                    ThisCurrentControlsThemeBackup.DropdownTextColor),
+                                DropdownFill:                   If( IsBlankOrError(ThisCurrentControlsThemeBackup.DropdownFill),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.DropdownFill),
+                                DropdownBorderColor:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.DropdownBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.DropdownBorderColor),
+                                DropdownHoverColor:             If( IsBlankOrError(ThisCurrentControlsThemeBackup.DropdownHoverColor),
+                                                                    ColorFade(ThisTheme.Color1Text, 20%),
+                                                                    ThisCurrentControlsThemeBackup.DropdownHoverColor),
+                                DropdownHoverFill:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.DropdownHoverFill),
+                                                                    ColorFade(ThisTheme.Color1, 20%),
+                                                                    ThisCurrentControlsThemeBackup.DropdownHoverFill),
+                                DropdownHoverBorderColor:       If( IsBlankOrError(ThisCurrentControlsThemeBackup.DropdownHoverBorderColor),
+                                                                    ColorFade(ThisTheme.Color2, 20%),
+                                                                    ThisCurrentControlsThemeBackup.DropdownHoverBorderColor),
+                                DropdownPressedColor:           If( IsBlankOrError(ThisCurrentControlsThemeBackup.DropdownPressedColor),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.DropdownPressedColor),
+                                DropdownPressedFill:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.DropdownPressedFill),
+                                                                    ThisTheme.Color1Text,
+                                                                    ThisCurrentControlsThemeBackup.DropdownPressedFill),
+                                DropdownPressedBorderColor:     If( IsBlankOrError(ThisCurrentControlsThemeBackup.DropdownPressedBorderColor),
+                                                                    ColorFade(ThisTheme.Color2, -20%),
+                                                                    ThisCurrentControlsThemeBackup.DropdownPressedBorderColor),
+                                DropdownChevronBackground:      If( IsBlankOrError(ThisCurrentControlsThemeBackup.DropdownChevronBackground),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.DropdownChevronBackground),
+                                DropdownChevronFill:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.DropdownChevronFill),
+                                                                    ThisTheme.Color2Text,
+                                                                    ThisCurrentControlsThemeBackup.DropdownChevronFill),
+                                DropdownChevronHoverBackground: If( IsBlankOrError(ThisCurrentControlsThemeBackup.DropdownChevronHoverBackground),
+                                                                    ColorFade(ThisTheme.Color2, 20%),
+                                                                    ThisCurrentControlsThemeBackup.DropdownChevronHoverBackground),
+                                DropdownChevronHoverFill:       If( IsBlankOrError(ThisCurrentControlsThemeBackup.DropdownChevronHoverFill),
+                                                                    ColorFade(ThisTheme.Color2Text, 20%),
+                                                                    ThisCurrentControlsThemeBackup.DropdownChevronHoverFill),
+                                DropdownSelectionColor:         If( IsBlankOrError(ThisCurrentControlsThemeBackup.DropdownSelectionColor),
+                                                                    ThisTheme.Color3Text,
+                                                                    ThisCurrentControlsThemeBackup.DropdownSelectionColor),
+                                DropdownSelectionFill:          If( IsBlankOrError(ThisCurrentControlsThemeBackup.DropdownSelectionFill),
+                                                                    ThisTheme.Color3,
+                                                                    ThisCurrentControlsThemeBackup.DropdownSelectionFill),
+                                DropdownFont:                   If( IsBlankOrError(ThisCurrentControlsThemeBackup.DropdownFont),
+                                                                    ThisTheme.Font,
+                                                                    ThisCurrentControlsThemeBackup.DropdownFont),
+                                ComboBoxTextColor:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.ComboBoxTextColor),
+                                                                    ThisTheme.Color1Text,
+                                                                    ThisCurrentControlsThemeBackup.ComboBoxTextColor),
+                                ComboBoxFill:                   If( IsBlankOrError(ThisCurrentControlsThemeBackup.ComboBoxFill),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.ComboBoxFill),
+                                ComboBoxBorderColor:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.ComboBoxBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.ComboBoxBorderColor),
+                                ComboBoxHoverColor:             If( IsBlankOrError(ThisCurrentControlsThemeBackup.ComboBoxHoverColor),
+                                                                    ColorFade(ThisTheme.Color1Text, 20%),
+                                                                    ThisCurrentControlsThemeBackup.ComboBoxHoverColor),
+                                ComboBoxHoverFill:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.ComboBoxHoverFill),
+                                                                    ColorFade(ThisTheme.Color1, 20%),
+                                                                    ThisCurrentControlsThemeBackup.ComboBoxHoverFill),
+                                ComboBoxHoverBorderColor:       If( IsBlankOrError(ThisCurrentControlsThemeBackup.ComboBoxHoverBorderColor),
+                                                                    ColorFade(ThisTheme.Color2, 20%),
+                                                                    ThisCurrentControlsThemeBackup.ComboBoxHoverBorderColor),
+                                ComboBoxPressedColor:           If( IsBlankOrError(ThisCurrentControlsThemeBackup.ComboBoxPressedColor),
+                                                                    ThisTheme.Color2Text,
+                                                                    ThisCurrentControlsThemeBackup.ComboBoxPressedColor),
+                                ComboBoxPressedFill:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.ComboBoxPressedFill),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.ComboBoxPressedFill),
+                                ComboBoxPressedBorderColor:     If( IsBlankOrError(ThisCurrentControlsThemeBackup.ComboBoxPressedBorderColor),
+                                                                    ColorFade(ThisTheme.Color2, -20%),
+                                                                    ThisCurrentControlsThemeBackup.ComboBoxPressedBorderColor),
+                                ComboBoxSelectionColor:         If( IsBlankOrError(ThisCurrentControlsThemeBackup.ComboBoxSelectionColor),
+                                                                    ThisTheme.Color3Text,
+                                                                    ThisCurrentControlsThemeBackup.ComboBoxSelectionColor),
+                                ComboBoxSelectionFill:          If( IsBlankOrError(ThisCurrentControlsThemeBackup.ComboBoxSelectionFill),
+                                                                    ThisTheme.Color3,
+                                                                    ThisCurrentControlsThemeBackup.ComboBoxSelectionFill),
+                                ComboBoxChevronBackground:      If( IsBlankOrError(ThisCurrentControlsThemeBackup.ComboBoxChevronBackground),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.ComboBoxChevronBackground),
+                                ComboBoxChevronFill:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.ComboBoxChevronFill),
+                                                                    ThisTheme.Color2Text,
+                                                                    ThisCurrentControlsThemeBackup.ComboBoxChevronFill),
+                                ComboBoxChevronHoverBackground: If( IsBlankOrError(ThisCurrentControlsThemeBackup.ComboBoxChevronHoverBackground),
+                                                                    ColorFade(ThisTheme.Color2, 20%),
+                                                                    ThisCurrentControlsThemeBackup.ComboBoxChevronHoverBackground),
+                                ComboBoxChevronHoverFill:       If( IsBlankOrError(ThisCurrentControlsThemeBackup.ComboBoxChevronHoverFill),
+                                                                    ColorFade(ThisTheme.Color2Text, 20%),
+                                                                    ThisCurrentControlsThemeBackup.ComboBoxChevronHoverFill),
+                                ComboBoxFont:                   If( IsBlankOrError(ThisCurrentControlsThemeBackup.ComboBoxFont),
+                                                                    ThisTheme.Font,
+                                                                    ThisCurrentControlsThemeBackup.ComboBoxFont),
+                                ComboBoxMoreItemsButtonColor:   If( IsBlankOrError(ThisCurrentControlsThemeBackup.ComboBoxMoreItemsButtonColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.ComboBoxMoreItemsButtonColor),
+                                DatePickerColor:                If( IsBlankOrError(ThisCurrentControlsThemeBackup.DatePickerColor),
+                                                                    ThisTheme.Color1Text,
+                                                                    ThisCurrentControlsThemeBackup.DatePickerColor),
+                                DatePickerFill:                 If( IsBlankOrError(ThisCurrentControlsThemeBackup.DatePickerFill),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.DatePickerFill),
+                                DatePickerBorderColor:          If( IsBlankOrError(ThisCurrentControlsThemeBackup.DatePickerBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.DatePickerBorderColor),
+                                DatePickerIconFill:             If( IsBlankOrError(ThisCurrentControlsThemeBackup.DatePickerIconFill),
+                                                                    ThisTheme.Color2Text,
+                                                                    ThisCurrentControlsThemeBackup.DatePickerIconFill),
+                                DatePickerIconBackground:       If( IsBlankOrError(ThisCurrentControlsThemeBackup.DatePickerIconBackground),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.DatePickerIconBackground),
+                                DatePickerSelectedDateFill:     If( IsBlankOrError(ThisCurrentControlsThemeBackup.DatePickerSelectedDateFill),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.DatePickerSelectedDateFill),
+                                DatePickerHoverDateFill:        If( IsBlankOrError(ThisCurrentControlsThemeBackup.DatePickerHoverDateFill),
+                                                                    ThisTheme.Color3Text,
+                                                                    ThisCurrentControlsThemeBackup.DatePickerHoverDateFill),
+                                DatePickerHeaderFill:           If( IsBlankOrError(ThisCurrentControlsThemeBackup.DatePickerHeaderFill),
+                                                                    ThisTheme.Color3,
+                                                                    ThisCurrentControlsThemeBackup.DatePickerHeaderFill),
+                                DatePickerFont:                 If( IsBlankOrError(ThisCurrentControlsThemeBackup.DatePickerFont),
+                                                                    ThisTheme.Font,
+                                                                    ThisCurrentControlsThemeBackup.DatePickerFont),
+                                ListBoxTextColor:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.ListBoxTextColor),
+                                                                    ThisTheme.Color1Text,
+                                                                    ThisCurrentControlsThemeBackup.ListBoxTextColor),
+                                ListBoxFill:                    If( IsBlankOrError(ThisCurrentControlsThemeBackup.ListBoxFill),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.ListBoxFill),
+                                ListBoxBorderColor:             If( IsBlankOrError(ThisCurrentControlsThemeBackup.ListBoxBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.ListBoxBorderColor),
+                                ListBoxHoverColor:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.ListBoxHoverColor),
+                                                                    ColorFade(ThisTheme.Color1Text, 20%),
+                                                                    ThisCurrentControlsThemeBackup.ListBoxHoverColor),
+                                ListBoxHoverFill:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.ListBoxHoverFill),
+                                                                    ColorFade(ThisTheme.Color1, 20%),
+                                                                    ThisCurrentControlsThemeBackup.ListBoxHoverFill),
+                                ListBoxHoverBorderColor:        If( IsBlankOrError(ThisCurrentControlsThemeBackup.ListBoxHoverBorderColor),
+                                                                    ColorFade(ThisTheme.Color2, 20%),
+                                                                    ThisCurrentControlsThemeBackup.ListBoxHoverBorderColor),
+                                ListBoxPressedColor:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.ListBoxPressedColor),
+                                                                    ThisTheme.Color2Text,
+                                                                    ThisCurrentControlsThemeBackup.ListBoxPressedColor),
+                                ListBoxPressedFill:             If( IsBlankOrError(ThisCurrentControlsThemeBackup.ListBoxPressedFill),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.ListBoxPressedFill),
+                                ListBoxPressedBorderColor:      If( IsBlankOrError(ThisCurrentControlsThemeBackup.ListBoxPressedBorderColor),
+                                                                    ColorFade(ThisTheme.Color2, -20%),
+                                                                    ThisCurrentControlsThemeBackup.ListBoxPressedBorderColor),       
+                                ListBoxSelectionColor:          If( IsBlankOrError(ThisCurrentControlsThemeBackup.ListBoxSelectionColor),
+                                                                    ThisTheme.Color3Text,
+                                                                    ThisCurrentControlsThemeBackup.ListBoxSelectionColor),
+                                ListBoxSelectionFill:           If( IsBlankOrError(ThisCurrentControlsThemeBackup.ListBoxSelectionFill),
+                                                                    ThisTheme.Color3,
+                                                                    ThisCurrentControlsThemeBackup.ListBoxSelectionFill),
+                                ListBoxFont:                    If( IsBlankOrError(ThisCurrentControlsThemeBackup.ListBoxFont),
+                                                                    ThisTheme.Font,
+                                                                    ThisCurrentControlsThemeBackup.ListBoxFont),
+                                ListBoxItemPaddingLeft:         If( IsBlankOrError(ThisCurrentControlsThemeBackup.ListBoxItemPaddingLeft),
+                                                                    10,
+                                                                    ThisCurrentControlsThemeBackup.ListBoxItemPaddingLeft),
+                
+                                CheckBoxTextColor:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.CheckBoxTextColor),
+                                                                    ThisTheme.defaultTextColor,
+                                                                    ThisCurrentControlsThemeBackup.CheckBoxTextColor),
+                                CheckBoxInnerBackground:        If( IsBlankOrError(ThisCurrentControlsThemeBackup.CheckBoxInnerBackground),
+                                                                    If(ThisTheme.DarkMode,
+                                                                        ColorFade(ThisTheme.Color1, -50%),
+                                                                        ColorFade(ThisTheme.Color1, 50%)
+                                                                    ),
+                                                                    ThisCurrentControlsThemeBackup.CheckBoxInnerBackground),
+                                CheckBoxBorderColor:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.CheckBoxBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.CheckBoxBorderColor),
+                                CheckBoxHoverColor:             If( IsBlankOrError(ThisCurrentControlsThemeBackup.CheckBoxHoverColor),
+                                                                    ColorFade(ThisTheme.defaultTextColor, 20%),
+                                                                    ThisCurrentControlsThemeBackup.CheckBoxHoverColor),
+                                CheckBoxHoverFill:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.CheckBoxHoverFill),
+                                                                    ColorFade(Transparent, 20%),
+                                                                    ThisCurrentControlsThemeBackup.CheckBoxHoverFill),
+                                CheckBoxHoverBorderColor:       If( IsBlankOrError(ThisCurrentControlsThemeBackup.CheckBoxHoverBorderColor),
+                                                                    ColorFade(ThisTheme.Color2, 20%),
+                                                                    ThisCurrentControlsThemeBackup.CheckBoxHoverBorderColor),
+                                CheckBoxPressedColor:           If( IsBlankOrError(ThisCurrentControlsThemeBackup.CheckBoxPressedColor),
+                                                                    ColorFade(ThisTheme.defaultTextColor, -20%),
+                                                                    ThisCurrentControlsThemeBackup.CheckBoxPressedColor),
+                                CheckBoxPressedFill:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.CheckBoxPressedFill),
+                                                                    ColorFade(Transparent, -20%),
+                                                                    ThisCurrentControlsThemeBackup.CheckBoxPressedFill),
+                                CheckBoxPressedBorderColor:     If( IsBlankOrError(ThisCurrentControlsThemeBackup.CheckBoxPressedBorderColor),
+                                                                    ColorFade(ThisTheme.Color2, -20%),
+                                                                    ThisCurrentControlsThemeBackup.CheckBoxPressedBorderColor),
+                                CheckBoxOutsideBorderColor:     If( IsBlankOrError(ThisCurrentControlsThemeBackup.CheckBoxOutsideBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.CheckBoxOutsideBorderColor),
+                                CheckBoxFill:                   If( IsBlankOrError(ThisCurrentControlsThemeBackup.CheckBoxFill),
+                                                                    Transparent,
+                                                                    ThisCurrentControlsThemeBackup.CheckBoxFill),
+                                CheckBoxCheckmarkFill:          If( IsBlankOrError(ThisCurrentControlsThemeBackup.CheckBoxCheckmarkFill),
+                                                                    ThisTheme.defaultTextColor,
+                                                                    ThisCurrentControlsThemeBackup.CheckBoxCheckmarkFill),
+                                CheckBoxFont:                   If( IsBlankOrError(ThisCurrentControlsThemeBackup.CheckBoxFont),
+                                                                    ThisTheme.Font,
+                                                                    ThisCurrentControlsThemeBackup.CheckBoxFont),
+                                CheckBoxSize:                   If( IsBlankOrError(ThisCurrentControlsThemeBackup.CheckBoxSize),
+                                                                    40,
+                                                                    ThisCurrentControlsThemeBackup.CheckBoxSize),
+                                
+                                RadioTextColor:                 If( IsBlankOrError(ThisCurrentControlsThemeBackup.RadioTextColor),
+                                                                    ThisTheme.defaultTextColor,
+                                                                    ThisCurrentControlsThemeBackup.RadioTextColor),
+                                RadioOutsideFill:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.RadioOutsideFill),
+                                                                    Transparent,
+                                                                    ThisCurrentControlsThemeBackup.RadioOutsideFill),
+                                RadioOutsideBorderColor:        If( IsBlankOrError(ThisCurrentControlsThemeBackup.RadioOutsideBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.RadioOutsideBorderColor),
+                                RadioHoverColor:                If( IsBlankOrError(ThisCurrentControlsThemeBackup.RadioHoverColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.RadioHoverColor),
+                                RadioHoverFill:                 If( IsBlankOrError(ThisCurrentControlsThemeBackup.RadioHoverFill),
+                                                                    Transparent,
+                                                                    ThisCurrentControlsThemeBackup.RadioHoverFill),
+                                RadioPressedColor:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.RadioPressedColor),
+                                                                    ThisTheme.defaultTextColor,
+                                                                    ThisCurrentControlsThemeBackup.RadioPressedColor),
+                                RadioPressedFill:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.RadioPressedFill),
+                                                                    Transparent,
+                                                                    ThisCurrentControlsThemeBackup.RadioPressedFill),
+                                RadioBorderColor:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.RadioBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.RadioBorderColor),
+                                RadioBackgroundFill:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.RadioBackgroundFill),
+                                                                    If(ThisTheme.DarkMode,
+                                                                        ColorFade(ThisTheme.Color1, -50%),
+                                                                        ColorFade(ThisTheme.Color1, 50%)
+                                                                    ),
+                                                                    ThisCurrentControlsThemeBackup.RadioBackgroundFill),
+                                RadioSelectionFill:             If( IsBlankOrError(ThisCurrentControlsThemeBackup.RadioSelectionFill),
+                                                                    ThisTheme.defaultTextColor,
+                                                                    ThisCurrentControlsThemeBackup.RadioSelectionFill),
+                                RadioFont:                      If( IsBlankOrError(ThisCurrentControlsThemeBackup.RadioFont),
+                                                                    ThisTheme.Font,
+                                                                    ThisCurrentControlsThemeBackup.RadioFont),
+                                RadioSize:                      If( IsBlankOrError(ThisCurrentControlsThemeBackup.RadioSize),
+                                                                    40,
+                                                                    ThisCurrentControlsThemeBackup.RadioSize),
+                                RadioLayout:                    If( IsBlankOrError(ThisCurrentControlsThemeBackup.RadioLayout),
+                                                                    Layout.Horizontal,
+                                                                    ThisCurrentControlsThemeBackup.RadioLayout),
+                                
+                                ToggleTextColor:                If( IsBlankOrError(ThisCurrentControlsThemeBackup.ToggleTextColor),
+                                                                    ThisTheme.defaultTextColor,
+                                                                    ThisCurrentControlsThemeBackup.ToggleTextColor),
+                                ToggleBorderColor:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.ToggleBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.ToggleBorderColor),
+                                ToggleHandleFill:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.ToggleHandleFill),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.ToggleHandleFill),
+                                ToggleFalseFill:                If( IsBlankOrError(ThisCurrentControlsThemeBackup.ToggleFalseFill),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.ToggleFalseFill),
+                                ToggleTrueFill:                 If( IsBlankOrError(ThisCurrentControlsThemeBackup.ToggleTrueFill),
+                                                                    ThisTheme.Color3,
+                                                                    ThisCurrentControlsThemeBackup.ToggleTrueFill),
+                                ToggleFalseHoverFill:           If( IsBlankOrError(ThisCurrentControlsThemeBackup.ToggleFalseHoverFill),
+                                                                    ColorFade(ThisTheme.Color1, 20%),
+                                                                    ThisCurrentControlsThemeBackup.ToggleFalseHoverFill),
+                                ToggleTrueHoverFill:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.ToggleTrueHoverFill),
+                                                                    ColorFade(ThisTheme.Color3, 20%),
+                                                                    ThisCurrentControlsThemeBackup.ToggleTrueHoverFill),
+                                ToggleHoverBorderColor:         If( IsBlankOrError(ThisCurrentControlsThemeBackup.ToggleHoverBorderColor),
+                                                                    ColorFade(ThisTheme.Color2, 20%),
+                                                                    ThisCurrentControlsThemeBackup.ToggleHoverBorderColor),
+                                TogglePressedBorderColor:       If( IsBlankOrError(ThisCurrentControlsThemeBackup.TogglePressedBorderColor),
+                                                                    ColorFade(ThisTheme.Color2, -20%),
+                                                                    ThisCurrentControlsThemeBackup.TogglePressedBorderColor),
+                                ToggleFont:                     If( IsBlankOrError(ThisCurrentControlsThemeBackup.ToggleFont),
+                                                                    ThisTheme.Font,
+                                                                    ThisCurrentControlsThemeBackup.ToggleFont),
+                                ToggleTextPosition:             If( IsBlankOrError(ThisCurrentControlsThemeBackup.ToggleTextPosition),
+                                                                    TextPosition.Left,
+                                                                    ThisCurrentControlsThemeBackup.ToggleTextPosition),
+                                SliderBorderColor:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.SliderBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.SliderBorderColor),
+                                SliderHandleFill:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.SliderHandleFill),
+                                                                    White,
+                                                                    ThisCurrentControlsThemeBackup.SliderHandleFill),
+                                SliderBackground:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.SliderBackground),
+                                                                    ThisTheme.Color3,
+                                                                    ThisCurrentControlsThemeBackup.SliderBackground),
+                                SliderValueFill:                If( IsBlankOrError(ThisCurrentControlsThemeBackup.SliderValueFill),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.SliderValueFill),
+                                SliderHandleHoverFill:          If( IsBlankOrError(ThisCurrentControlsThemeBackup.SliderHandleHoverFill),
+                                                                    ColorFade(White, 20%),
+                                                                    ThisCurrentControlsThemeBackup.SliderHandleHoverFill),
+                                SliderHandleActiveFill:         If( IsBlankOrError(ThisCurrentControlsThemeBackup.SliderHandleActiveFill),
+                                                                    ColorFade(White, 40%),
+                                                                    ThisCurrentControlsThemeBackup.SliderHandleActiveFill),
+                                SliderRailHoverFill:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.SliderRailHoverFill),
+                                                                    ColorFade(ThisTheme.Color3,  20%),
+                                                                    ThisCurrentControlsThemeBackup.SliderRailHoverFill),
+                                SliderValueHoverFill:           If( IsBlankOrError(ThisCurrentControlsThemeBackup.SliderValueHoverFill),
+                                                                    ColorFade(ThisTheme.Color2,  20%),
+                                                                    ThisCurrentControlsThemeBackup.SliderValueHoverFill),
+                                SliderHoverBorderColor:         If( IsBlankOrError(ThisCurrentControlsThemeBackup.SliderHoverBorderColor),
+                                                                    ColorFade(ThisTheme.Color2,  20%),
+                                                                    ThisCurrentControlsThemeBackup.SliderHoverBorderColor),
+                                SliderPressedBorderColor:       If( IsBlankOrError(ThisCurrentControlsThemeBackup.SliderPressedBorderColor),
+                                                                    ColorFade(ThisTheme.Color2, -20%),
+                                                                    ThisCurrentControlsThemeBackup.SliderPressedBorderColor),
+                                SliderRailThickness:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.SliderRailThickness),
+                                                                    24,
+                                                                    ThisCurrentControlsThemeBackup.SliderRailThickness),
+                                SliderHandleSize:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.SliderHandleSize),
+                                                                    24,
+                                                                    ThisCurrentControlsThemeBackup.SliderHandleSize),
+                
+                                RatingItemFill:                 If( IsBlankOrError(ThisCurrentControlsThemeBackup.RatingItemFill),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.RatingItemFill),
+                                RatingFill:                     If( IsBlankOrError(ThisCurrentControlsThemeBackup.RatingFill),
+                                                                    Transparent,
+                                                                    ThisCurrentControlsThemeBackup.RatingFill),
+                                RatingBorderColor:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.RatingBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.RatingBorderColor),
+                                TimerTextColor:                   If( IsBlankOrError(ThisCurrentControlsThemeBackup.TimerTextColor),
+                                                                    ThisTheme.Color1Text,
+                                                                    ThisCurrentControlsThemeBackup.TimerTextColor),
+                                TimerFill:                        If( IsBlankOrError(ThisCurrentControlsThemeBackup.TimerFill),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.TimerFill),
+                                TimerBorderColor:                 If( IsBlankOrError(ThisCurrentControlsThemeBackup.TimerBorderColor),
+                                                                    ColorFade(ThisTheme.Color1, -20%),
+                                                                    ThisCurrentControlsThemeBackup.TimerBorderColor),
+                                TimerHoverColor:                  If( IsBlankOrError(ThisCurrentControlsThemeBackup.TimerHoverColor),
+                                                                    ColorFade(ThisTheme.Color1Text, 20%),
+                                                                    ThisCurrentControlsThemeBackup.TimerHoverColor),
+                                TimerHoverFill:                   If( IsBlankOrError(ThisCurrentControlsThemeBackup.TimerHoverFill),
+                                                                    ColorFade(ThisTheme.Color1,  20%),
+                                                                    ThisCurrentControlsThemeBackup.TimerHoverFill),
+                                TimerHoverBorderColor:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.TimerHoverBorderColor),
+                                                                    ColorFade(ThisTheme.Color1,  20%),
+                                                                    ThisCurrentControlsThemeBackup.TimerHoverBorderColor),
+                                TimerPressedColor:                If( IsBlankOrError(ThisCurrentControlsThemeBackup.TimerPressedColor),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.TimerPressedColor),
+                                TimerPressedFill:                 If( IsBlankOrError(ThisCurrentControlsThemeBackup.TimerPressedFill),
+                                                                    ThisTheme.Color1Text,
+                                                                    ThisCurrentControlsThemeBackup.TimerPressedFill),
+                                TimerPressedBorderColor:          If( IsBlankOrError(ThisCurrentControlsThemeBackup.TimerPressedBorderColor),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.TimerPressedBorderColor),
+                                TimerFont:                        If( IsBlankOrError(ThisCurrentControlsThemeBackup.TimerFont),
+                                                                    ThisTheme.Font,
+                                                                    ThisCurrentControlsThemeBackup.TimerFont),
+                                ImageFill:                        If( IsBlankOrError(ThisCurrentControlsThemeBackup.ImageFill),
+                                                                    Transparent,
+                                                                    ThisCurrentControlsThemeBackup.ImageFill),
+                                ImageBorderColor:                 If( IsBlankOrError(ThisCurrentControlsThemeBackup.ImageBorderColor),
+                                                                    Transparent,
+                                                                    ThisCurrentControlsThemeBackup.ImageBorderColor),
+                                ImageHoverFill:                   If( IsBlankOrError(ThisCurrentControlsThemeBackup.ImageHoverFill),
+                                                                    Transparent,
+                                                                    ThisCurrentControlsThemeBackup.ImageHoverFill),
+                                ImageHoverBorderColor:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.ImageHoverBorderColor),
+                                                                    Transparent,
+                                                                    ThisCurrentControlsThemeBackup.ImageHoverBorderColor),
+                                ImagePressedFill:                 If( IsBlankOrError(ThisCurrentControlsThemeBackup.ImagePressedFill),
+                                                                    Transparent,
+                                                                    ThisCurrentControlsThemeBackup.ImagePressedFill),
+                                ImagePressedBorderColor:          If( IsBlankOrError(ThisCurrentControlsThemeBackup.ImagePressedBorderColor),
+                                                                    Transparent,
+                                                                    ThisCurrentControlsThemeBackup.ImagePressedBorderColor),
+                
+                                CameraBorderColor:                If( IsBlankOrError(ThisCurrentControlsThemeBackup.CameraBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.CameraBorderColor),
+                
+                                BarcodeColor:                     If( IsBlankOrError(ThisCurrentControlsThemeBackup.BarcodeColor),
+                                                                    ThisTheme.Color1Text,
+                                                                    ThisCurrentControlsThemeBackup.BarcodeColor),
+                                BarcodeFill:                      If( IsBlankOrError(ThisCurrentControlsThemeBackup.BarcodeFill),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.BarcodeFill),
+                                BarcodeBorderColor:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.BarcodeBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.BarcodeBorderColor),
+                                BarcodeHoverColor:                If( IsBlankOrError(ThisCurrentControlsThemeBackup.BarcodeHoverColor),
+                                                                    ColorFade(ThisTheme.Color1Text, 20%),
+                                                                    ThisCurrentControlsThemeBackup.BarcodeHoverColor),
+                                BarcodeHoverFill:                 If( IsBlankOrError(ThisCurrentControlsThemeBackup.BarcodeHoverFill),
+                                                                    ColorFade(ThisTheme.Color1, 20%),
+                                                                    ThisCurrentControlsThemeBackup.BarcodeHoverFill),
+                                BarcodeHoverBorderColor:          If( IsBlankOrError(ThisCurrentControlsThemeBackup.BarcodeHoverBorderColor),
+                                                                    ColorFade(ThisTheme.Color2, 20%),
+                                                                    ThisCurrentControlsThemeBackup.BarcodeHoverBorderColor),
+                                BarcodePressedColor:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.BarcodePressedColor),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.BarcodePressedColor),
+                                BarcodePressedFill:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.BarcodePressedFill),
+                                                                    ThisTheme.Color1Text,
+                                                                    ThisCurrentControlsThemeBackup.BarcodePressedFill),
+                                BarcodePressedBorderColor:        If( IsBlankOrError(ThisCurrentControlsThemeBackup.BarcodePressedBorderColor),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.BarcodePressedBorderColor),
+                                BarcodeFont:                      If( IsBlankOrError(ThisCurrentControlsThemeBackup.BarcodeFont),
+                                                                    ThisTheme.Font,
+                                                                    ThisCurrentControlsThemeBackup.BarcodeFont),
+                                VideoFill:                        If( IsBlankOrError(ThisCurrentControlsThemeBackup.VideoFill),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.VideoFill),
+                                VideoBorderColor:                 If( IsBlankOrError(ThisCurrentControlsThemeBackup.VideoBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.VideoBorderColor),
+                                StreamColor:                      If( IsBlankOrError(ThisCurrentControlsThemeBackup.StreamColor),
+                                                                    ThisTheme.defaultTextColor,
+                                                                    ThisCurrentControlsThemeBackup.StreamColor),
+                                StreamFill:                       If( IsBlankOrError(ThisCurrentControlsThemeBackup.StreamFill),
+                                                                    Transparent,
+                                                                    ThisCurrentControlsThemeBackup.StreamFill),
+                                StreamBorderColor:                If( IsBlankOrError(ThisCurrentControlsThemeBackup.StreamBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.StreamBorderColor),
+                                AudioFill:                        If( IsBlankOrError(ThisCurrentControlsThemeBackup.AudioFill),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.AudioFill),
+                                AudioBorderColor:                 If( IsBlankOrError(ThisCurrentControlsThemeBackup.AudioBorderColor),
+                                                                    ColorFade(ThisTheme.Color1, -20%),
+                                                                    ThisCurrentControlsThemeBackup.AudioBorderColor),
+                                MicrophoneColor:                  If( IsBlankOrError(ThisCurrentControlsThemeBackup.MicrophoneColor),
+                                                                    ThisTheme.Color1Text,
+                                                                    ThisCurrentControlsThemeBackup.MicrophoneColor),
+                                MicrophoneFill:                   If( IsBlankOrError(ThisCurrentControlsThemeBackup.MicrophoneFill),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.MicrophoneFill),
+                                MicrophoneBorderColor:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.MicrophoneBorderColor),
+                                                                    ColorFade(ThisTheme.Color1, -20%),
+                                                                    ThisCurrentControlsThemeBackup.MicrophoneBorderColor),
+                                MicrophoneHoverColor:             If( IsBlankOrError(ThisCurrentControlsThemeBackup.MicrophoneHoverColor),
+                                                                    ColorFade(ThisTheme.Color1Text, 20%),
+                                                                    ThisCurrentControlsThemeBackup.MicrophoneHoverColor),
+                                MicrophoneHoverFill:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.MicrophoneHoverFill),
+                                                                    ColorFade(ThisTheme.Color1, 20%),
+                                                                    ThisCurrentControlsThemeBackup.MicrophoneHoverFill),
+                                MicrophoneHoverBorderColor:       If( IsBlankOrError(ThisCurrentControlsThemeBackup.MicrophoneHoverBorderColor),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.MicrophoneHoverBorderColor),
+                                MicrophonePressedColor:           If( IsBlankOrError(ThisCurrentControlsThemeBackup.MicrophonePressedColor),
+                                                                    ColorFade(ThisTheme.Color1Text, -20%),
+                                                                    ThisCurrentControlsThemeBackup.MicrophonePressedColor),
+                                MicrophonePressedFill:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.MicrophonePressedFill),
+                                                                    ColorFade(ThisTheme.Color1, -20%),
+                                                                    ThisCurrentControlsThemeBackup.MicrophonePressedFill),
+                                MicrophonePressedBorderColor:     If( IsBlankOrError(ThisCurrentControlsThemeBackup.MicrophonePressedBorderColor),
+                                                                    ColorFade(ThisTheme.Color1, -40%),
+                                                                    ThisCurrentControlsThemeBackup.MicrophonePressedBorderColor),
+                
+                                AddPictureColor:                  If( IsBlankOrError(ThisCurrentControlsThemeBackup.AddPictureColor),
+                                                                    ThisTheme.Color1Text,
+                                                                    ThisCurrentControlsThemeBackup.AddPictureColor),
+                                AddPictureFill:                   If( IsBlankOrError(ThisCurrentControlsThemeBackup.AddPictureFill),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.AddPictureFill),
+                                AddPictureBorderColor:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.AddPictureBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.AddPictureBorderColor),
+                                AddPictureHoverColor:             If( IsBlankOrError(ThisCurrentControlsThemeBackup.AddPictureHoverColor),
+                                                                    ThisTheme.Color1Text,
+                                                                    ThisCurrentControlsThemeBackup.AddPictureHoverColor),
+                                AddPictureHoverFill:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.AddPictureHoverFill),
+                                                                    ColorFade(ThisTheme.Color1, 20%),
+                                                                    ThisCurrentControlsThemeBackup.AddPictureHoverFill),
+                                AddPictureHoverBorderColor:       If( IsBlankOrError(ThisCurrentControlsThemeBackup.AddPictureHoverBorderColor),
+                                                                    ColorFade(ThisTheme.Color2, 20%),
+                                                                    ThisCurrentControlsThemeBackup.AddPictureHoverBorderColor),
+                                AddPicturePressedColor:           If( IsBlankOrError(ThisCurrentControlsThemeBackup.AddPicturePressedColor),
+                                                                    ThisTheme.Color1Text,
+                                                                    ThisCurrentControlsThemeBackup.AddPicturePressedColor),
+                                AddPicturePressedFill:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.AddPicturePressedFill),
+                                                                    ColorFade(ThisTheme.Color1, -20%),
+                                                                    ThisCurrentControlsThemeBackup.AddPicturePressedFill),
+                                AddPicturePressedBorderColor:     If( IsBlankOrError(ThisCurrentControlsThemeBackup.AddPicturePressedBorderColor),
+                                                                    ColorFade(ThisTheme.Color2, -20%),
+                                                                    ThisCurrentControlsThemeBackup.AddPicturePressedBorderColor),
+                                AddPictureFont:                   If( IsBlankOrError(ThisCurrentControlsThemeBackup.AddPictureFont),
+                                                                    ThisTheme.Font,
+                                                                    ThisCurrentControlsThemeBackup.AddPictureFont),
+                                ImportColor:                      If( IsBlankOrError(ThisCurrentControlsThemeBackup.ImportColor),
+                                                                    ThisTheme.Color1Text,
+                                                                    ThisCurrentControlsThemeBackup.ImportColor),
+                                ImportFill:                       If( IsBlankOrError(ThisCurrentControlsThemeBackup.ImportFill),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.ImportFill),
+                                ImportBorderColor:                If( IsBlankOrError(ThisCurrentControlsThemeBackup.ImportBorderColor),
+                                                                    ColorFade(ThisTheme.Color1, -20%),
+                                                                    ThisCurrentControlsThemeBackup.ImportBorderColor),
+                                ImportFont:                       If( IsBlankOrError(ThisCurrentControlsThemeBackup.ImportFont),
+                                                                    ThisTheme.Font,
+                                                                    ThisCurrentControlsThemeBackup.ImportFont),
+                                ImportHoverColor:                 If( IsBlankOrError(ThisCurrentControlsThemeBackup.ImportHoverColor),
+                                                                    ColorFade(ThisTheme.Color1Text, 20%),
+                                                                    ThisCurrentControlsThemeBackup.ImportHoverColor),
+                                ImportHoverFill:                  If( IsBlankOrError(ThisCurrentControlsThemeBackup.ImportHoverFill),
+                                                                    ColorFade(ThisTheme.Color1, 20%),
+                                                                    ThisCurrentControlsThemeBackup.ImportHoverFill),
+                                ImportHoverBorderColor:           If( IsBlankOrError(ThisCurrentControlsThemeBackup.ImportHoverBorderColor),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.ImportHoverBorderColor),
+                                ImportPressedColor:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.ImportPressedColor),
+                                                                    ThisTheme.Color1Text,
+                                                                    ThisCurrentControlsThemeBackup.ImportPressedColor),
+                                ImportPressedFill:                If( IsBlankOrError(ThisCurrentControlsThemeBackup.ImportPressedFill),
+                                                                    ColorFade(ThisTheme.Color1, -20%),
+                                                                    ThisCurrentControlsThemeBackup.ImportPressedFill),
+                                ImportPressedBorderColor:         If( IsBlankOrError(ThisCurrentControlsThemeBackup.ImportPressedBorderColor),
+                                                                    ColorFade(ThisTheme.Color1, -40%),
+                                                                    ThisCurrentControlsThemeBackup.ImportPressedBorderColor),
+                                ExportColor:                      If( IsBlankOrError(ThisCurrentControlsThemeBackup.ExportColor),
+                                                                    ThisTheme.Color1Text,
+                                                                    ThisCurrentControlsThemeBackup.ExportColor),
+                                ExportFill:                       If( IsBlankOrError(ThisCurrentControlsThemeBackup.ExportFill),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.ExportFill),
+                                ExportBorderColor:                If( IsBlankOrError(ThisCurrentControlsThemeBackup.ExportBorderColor),
+                                                                    ColorFade(ThisTheme.Color1, -20%),
+                                                                    ThisCurrentControlsThemeBackup.ExportBorderColor),
+                                ExportFont:                       If( IsBlankOrError(ThisCurrentControlsThemeBackup.ExportFont),
+                                                                    ThisTheme.Font,
+                                                                    ThisCurrentControlsThemeBackup.ExportFont),
+                                ExportHoverColor:                 If( IsBlankOrError(ThisCurrentControlsThemeBackup.ExportHoverColor),
+                                                                    ColorFade(ThisTheme.Color1Text, 20%),
+                                                                    ThisCurrentControlsThemeBackup.ExportHoverColor),
+                                ExportHoverFill:                  If( IsBlankOrError(ThisCurrentControlsThemeBackup.ExportHoverFill),
+                                                                    ColorFade(ThisTheme.Color1, 20%),
+                                                                    ThisCurrentControlsThemeBackup.ExportHoverFill),
+                                ExportHoverBorderColor:           If( IsBlankOrError(ThisCurrentControlsThemeBackup.ExportHoverBorderColor),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.ExportHoverBorderColor),
+                                ExportPressedColor:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.ExportPressedColor),
+                                                                    ThisTheme.Color1Text,
+                                                                    ThisCurrentControlsThemeBackup.ExportPressedColor),
+                                ExportPressedFill:                If( IsBlankOrError(ThisCurrentControlsThemeBackup.ExportPressedFill),
+                                                                    ColorFade(ThisTheme.Color1, -20%),
+                                                                    ThisCurrentControlsThemeBackup.ExportPressedFill),
+                                ExportPressedBorderColor:         If( IsBlankOrError(ThisCurrentControlsThemeBackup.ExportPressedBorderColor),
+                                                                    ColorFade(ThisTheme.Color1, -40%),
+                                                                    ThisCurrentControlsThemeBackup.ExportPressedBorderColor),
+                                GalleryFill:                      If( IsBlankOrError(ThisCurrentControlsThemeBackup.GalleryFill),
+                                                                    RGBA(0,0,0,0),
+                                                                    ThisCurrentControlsThemeBackup.GalleryFill),
+                                GalleryBorderColor:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.GalleryBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.GalleryBorderColor),
+                                GallerytitleLabelColor:           If( IsBlankOrError(ThisCurrentControlsThemeBackup.GallerytitleLabelColor),
+                                                                    ThisTheme.Color3,
+                                                                    ThisCurrentControlsThemeBackup.GallerytitleLabelColor),
+                                GallerysubtitleLabelColor:        If( IsBlankOrError(ThisCurrentControlsThemeBackup.GallerysubtitleLabelColor),
+                                                                    ThisTheme.defaultTextColor,
+                                                                    ThisCurrentControlsThemeBackup.GallerysubtitleLabelColor),
+                                GallerytitleLabelFont:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.GallerytitleLabelFont),
+                                                                    ThisTheme.Font,
+                                                                    ThisCurrentControlsThemeBackup.GallerytitleLabelFont),       
+                                GallerysubtitleLabelFont:         If( IsBlankOrError(ThisCurrentControlsThemeBackup.GallerysubtitleLabelFont),
+                                                                    ThisTheme.Font,
+                                                                    ThisCurrentControlsThemeBackup.GallerysubtitleLabelFont),
+                                GallerycontentLabelColor:         If( IsBlankOrError(ThisCurrentControlsThemeBackup.GallerycontentLabelColor),
+                                                                    ThisTheme.defaultTextColor,
+                                                                    ThisCurrentControlsThemeBackup.GallerycontentLabelColor),
+                                GallerycontentLabelFont:          If( IsBlankOrError(ThisCurrentControlsThemeBackup.GallerycontentLabelFont),
+                                                                    ThisTheme.Font,
+                                                                    ThisCurrentControlsThemeBackup.GallerycontentLabelFont),     
+                                IconFill:                         If( IsBlankOrError(ThisCurrentControlsThemeBackup.IconFill),
+                                                                    ThisTheme.Color3,
+                                                                    ThisCurrentControlsThemeBackup.IconFill),
+                                IconHoverFill:                    If( IsBlankOrError(ThisCurrentControlsThemeBackup.IconHoverFill),
+                                                                    ColorFade(ThisTheme.Color3,  20%),
+                                                                    ThisCurrentControlsThemeBackup.IconHoverFill),
+                                IconPressedFill:                  If( IsBlankOrError(ThisCurrentControlsThemeBackup.IconPressedFill),
+                                                                    ColorFade(ThisTheme.Color3, -20%),
+                                                                    ThisCurrentControlsThemeBackup.IconPressedFill),
+                                IconBackground:                   If( IsBlankOrError(ThisCurrentControlsThemeBackup.IconBackground),
+                                                                    RGBA(0,0,0,0),
+                                                                    ThisCurrentControlsThemeBackup.IconBackground),
+                                IconHoverBackground:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.IconHoverBackground),
+                                                                    RGBA(0,0,0,0),
+                                                                    ThisCurrentControlsThemeBackup.IconHoverBackground),
+                                IconPressedBackground:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.IconPressedBackground),
+                                                                    RGBA(0,0,0,0),
+                                                                    ThisCurrentControlsThemeBackup.IconPressedBackground),
+                                IconBorderColor:                  If( IsBlankOrError(ThisCurrentControlsThemeBackup.IconBorderColor),
+                                                                    ColorFade(ThisTheme.Color3, -20%),
+                                                                    ThisCurrentControlsThemeBackup.IconBorderColor),
+                                IconHoverBorderColor:             If( IsBlankOrError(ThisCurrentControlsThemeBackup.IconHoverBorderColor),
+                                                                    ThisTheme.Color3,
+                                                                    ThisCurrentControlsThemeBackup.IconHoverBorderColor),
+                                IconPressedBorderColor:           If( IsBlankOrError(ThisCurrentControlsThemeBackup.IconPressedBorderColor),
+                                                                    ColorFade(ThisTheme.Color3, -40%),
+                                                                    ThisCurrentControlsThemeBackup.IconPressedBorderColor),
+                                AttachmentTextColor:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.AttachmentTextColor),
+                                                                    ThisTheme.Color1Text,
+                                                                    ThisCurrentControlsThemeBackup.AttachmentTextColor),
+                                AttachmentFill:                   If( IsBlankOrError(ThisCurrentControlsThemeBackup.AttachmentFill),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.AttachmentFill),
+                                AttachmentBorderColor:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.AttachmentBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.AttachmentBorderColor),
+                                AttachmentHoverColor:             If( IsBlankOrError(ThisCurrentControlsThemeBackup.AttachmentHoverColor),
+                                                                    ColorFade(ThisTheme.Color1Text, 20%),
+                                                                    ThisCurrentControlsThemeBackup.AttachmentHoverColor),
+                                AttachmentHoverFill:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.AttachmentHoverFill),
+                                                                    ColorFade(ThisTheme.Color1, 20%),
+                                                                    ThisCurrentControlsThemeBackup.AttachmentHoverFill),
+                                AttachmentHoverBorderColor:       If( IsBlankOrError(ThisCurrentControlsThemeBackup.AttachmentHoverBorderColor),
+                                                                    ColorFade(ThisTheme.Color2, 20%),
+                                                                    ThisCurrentControlsThemeBackup.AttachmentHoverBorderColor),
+                                AttachmentFont:                   If( IsBlankOrError(ThisCurrentControlsThemeBackup.AttachmentFont),
+                                                                    ThisTheme.Font,
+                                                                    ThisCurrentControlsThemeBackup.AttachmentFont),
+                                AttachmentPressedColor:           If( IsBlankOrError(ThisCurrentControlsThemeBackup.AttachmentPressedColor),
+                                                                    ThisTheme.Color2Text,
+                                                                    ThisCurrentControlsThemeBackup.AttachmentPressedColor),
+                                AttachmentPressedFill:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.AttachmentPressedFill),
+                                                                        ThisTheme.Color2,
+                                                                        ThisCurrentControlsThemeBackup.AttachmentPressedFill),
+                                AttachmentItemColor:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.AttachmentItemColor),
+                                                                    ThisTheme.Color3Text,
+                                                                    ThisCurrentControlsThemeBackup.AttachmentItemColor),
+                                AttachmentItemFill:                 If( IsBlankOrError(ThisCurrentControlsThemeBackup.AttachmentItemFill),
+                                                                        ThisTheme.Color3,
+                                                                        ThisCurrentControlsThemeBackup.AttachmentItemFill),
+                                AttachmentItemHoverColor:         If( IsBlankOrError(ThisCurrentControlsThemeBackup.AttachmentItemHoverColor),
+                                                                    ColorFade(ThisTheme.Color3Text, 20%),
+                                                                    ThisCurrentControlsThemeBackup.AttachmentItemHoverColor),
+                                AttachmentItemHoverFill:          If( IsBlankOrError(ThisCurrentControlsThemeBackup.AttachmentItemHoverFill),
+                                                                    ColorFade(ThisTheme.Color3, 20%),
+                                                                    ThisCurrentControlsThemeBackup.AttachmentItemHoverFill),
+                                EditFormBorderColor:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.EditFormBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.EditFormBorderColor),
+                                EditFormFill:                     If( IsBlankOrError(ThisCurrentControlsThemeBackup.EditFormFill),
+                                                                    If(ThisTheme.DarkMode,
+                                                                        ColorFade(ThisTheme.Color1, -50%),
+                                                                        ColorFade(ThisTheme.Color1, 50%)
+                                                                    ),
+                                                                    ThisCurrentControlsThemeBackup.EditFormFill),
+                                ViewFormBorderColor:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.ViewFormBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.ViewFormBorderColor),
+                                ViewFormFill:                     If( IsBlankOrError(ThisCurrentControlsThemeBackup.ViewFormFill),
+                                                                    If(ThisTheme.DarkMode,
+                                                                        ColorFade(ThisTheme.Color1, -50%),
+                                                                        ColorFade(ThisTheme.Color1, 50%)
+                                                                    ),
+                                                                    ThisCurrentControlsThemeBackup.ViewFormFill),
+                
+                                FormTitleLabelColor:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.FormTitleLabelColor),
+                                                                    ThisTheme.Color3,
+                                                                    ThisCurrentControlsThemeBackup.FormTitleLabelColor),
+                                FormTitleLabelFont:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.FormTitleLabelFont),
+                                                                    ThisTheme.Font,
+                                                                    ThisCurrentControlsThemeBackup.FormTitleLabelFont),
+                                ScreenBackground:                 If( IsBlankOrError(ThisCurrentControlsThemeBackup.ScreenBackground),
+                                                                    If(ThisTheme.DarkMode,
+                                                                        ColorFade(ThisTheme.Color1, -50%),
+                                                                        ColorFade(ThisTheme.Color1, 50%)
+                                                                    ),
+                                                                    ThisCurrentControlsThemeBackup.ScreenBackground),
+                                DataTableColor1:                  If( IsBlankOrError(ThisCurrentControlsThemeBackup.DataTableColor1),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.DataTableColor1),
+                                DataTableColor2:                  If( IsBlankOrError(ThisCurrentControlsThemeBackup.DataTableColor2),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.DataTableColor2),
+                                DataTableColor3:                  If( IsBlankOrError(ThisCurrentControlsThemeBackup.DataTableColor3),
+                                                                    ThisTheme.Color3,
+                                                                    ThisCurrentControlsThemeBackup.DataTableColor3),
+                                DataTableColor:                   If( IsBlankOrError(ThisCurrentControlsThemeBackup.DataTableColor),
+                                                                    ThisTheme.Color1Text,
+                                                                    ThisCurrentControlsThemeBackup.DataTableColor),
+                                DataTableFill:                    If( IsBlankOrError(ThisCurrentControlsThemeBackup.DataTableFill),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.DataTableFill),
+                                DataTableColorInverted:           If( IsBlankOrError(ThisCurrentControlsThemeBackup.DataTableColorInverted),
+                                                                    ThisTheme.Color3Text,
+                                                                    ThisCurrentControlsThemeBackup.DataTableColorInverted),
+                                DataTableSelectedColor:           If( IsBlankOrError(ThisCurrentControlsThemeBackup.DataTableSelectedColor),
+                                                                    ThisTheme.Color3Text,
+                                                                    ThisCurrentControlsThemeBackup.DataTableSelectedColor),
+                                DataTableSelectedFill:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.DataTableSelectedFill),
+                                                                    ThisTheme.Color3,
+                                                                    ThisCurrentControlsThemeBackup.DataTableSelectedFill),
+                                DataTableHoverColor:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.DataTableHoverColor),
+                                                                    ThisTheme.Color2Text,
+                                                                    ThisCurrentControlsThemeBackup.DataTableHoverColor),
+                                DataTableHoverFill:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.DataTableHoverFill),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.DataTableHoverFill),
+                                DataTableBorderColor:             If( IsBlankOrError(ThisCurrentControlsThemeBackup.DataTableBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.DataTableBorderColor),
+                                DataTableInputFill:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.DataTableInputFill),
+                                                                    ThisTheme.Color1,
+                                                                    ThisCurrentControlsThemeBackup.DataTableInputFill),
+                                DataTableFont:                    If( IsBlankOrError(ThisCurrentControlsThemeBackup.DataTableFont),
+                                                                    ThisTheme.Font,
+                                                                    ThisCurrentControlsThemeBackup.DataTableFont),
+                                DataTableHeadingFont:             If( IsBlankOrError(ThisCurrentControlsThemeBackup.DataTableHeadingFont),
+                                                                    ThisTheme.Font,
+                                                                    ThisCurrentControlsThemeBackup.DataTableHeadingFont),
+                                DataTableHeadingColor:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.DataTableHeadingColor),
+                                                                    ThisTheme.Color2Text,
+                                                                    ThisCurrentControlsThemeBackup.DataTableHeadingColor),
+                                DataTableHeadingFill:             If( IsBlankOrError(ThisCurrentControlsThemeBackup.DataTableHeadingFill),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.DataTableHeadingFill),
+                                DataTableFontWeight:              If( IsBlankOrError(ThisCurrentControlsThemeBackup.DataTableFontWeight),
+                                                                    FontWeight.Normal,
+                                                                    ThisCurrentControlsThemeBackup.DataTableFontWeight),
+                                DataTableHeadingFontWeight:       If( IsBlankOrError(ThisCurrentControlsThemeBackup.DataTableHeadingFontWeight),
+                                                                    FontWeight.Semibold,
+                                                                    ThisCurrentControlsThemeBackup.DataTableHeadingFontWeight),
+                                PdfViewerFill:                    If( IsBlankOrError(ThisCurrentControlsThemeBackup.PdfViewerFill),
+                                                                    ColorFade(ThisTheme.Color1, -50%),
+                                                                    ThisCurrentControlsThemeBackup.PdfViewerFill),
+                                PdfViewerBorderColor:             If( IsBlankOrError(ThisCurrentControlsThemeBackup.PdfViewerBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.PdfViewerBorderColor),
+                                PowerBIBorderColor:               If( IsBlankOrError(ThisCurrentControlsThemeBackup.PowerBIBorderColor),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.PowerBIBorderColor),
+                                invertedBkgHeaderLabelColor:      If( IsBlankOrError(ThisCurrentControlsThemeBackup.invertedBkgHeaderLabelColor),
+                                                                    ThisTheme.Color2Text,
+                                                                    ThisCurrentControlsThemeBackup.invertedBkgHeaderLabelColor),
+                                IconFillInverted:                 If( IsBlankOrError(ThisCurrentControlsThemeBackup.IconFillInverted),
+                                                                    ThisTheme.Color2,
+                                                                    ThisCurrentControlsThemeBackup.IconFillInverted),
+                                basicNoSizeLabelColor:            If( IsBlankOrError(ThisCurrentControlsThemeBackup.basicNoSizeLabelColor),
+                                                                    ThisTheme.Color3,
+                                                                    ThisCurrentControlsThemeBackup.basicNoSizeLabelColor),
+                                invertedBkgHeaderIconColor:       If( IsBlankOrError(ThisCurrentControlsThemeBackup.invertedBkgHeaderIconColor),
+                                                                    ThisTheme.Color3Text,
+                                                                    ThisCurrentControlsThemeBackup.invertedBkgHeaderIconColor),
+                                basicNoSizeInvertedBkgLabelColor: If( IsBlankOrError(ThisCurrentControlsThemeBackup.basicNoSizeInvertedBkgLabelColor),
+                                                                    ThisTheme.Color3Text,
+                                                                    ThisCurrentControlsThemeBackup.basicNoSizeInvertedBkgLabelColor),
+                                basicNoSizeWeightColorLabelColor: If( IsBlankOrError(ThisCurrentControlsThemeBackup.basicNoSizeWeightColorLabelColor),
+                                                                    ThisTheme.defaultTextColor,
+                                                                    ThisCurrentControlsThemeBackup.basicNoSizeWeightColorLabelColor)
+                            }
+                        );
+                    );
+                )
+    SetFontSize(FontIncrementValue As Number):
+        FontIncrementValue:
+            Default: =100
+        ThisProperty:
+            Default: |-
+                =Set(FontSizes,
+                {
+                    TextMain:                       cmp_Header.CMPThisTheme.FontSize + FontIncrementValue -1,
+                    TextEmphasis:                   cmp_Header.CMPThisTheme.FontSize + FontIncrementValue +1,
+                    Content:                        cmp_Header.CMPThisTheme.FontSize + FontIncrementValue +2,
+                    Title:                          cmp_Header.CMPThisTheme.FontSize + FontIncrementValue +6,
+                    SubTitle:                       cmp_Header.CMPThisTheme.FontSize + FontIncrementValue +4,
+                    AddPicture:                     cmp_Header.CMPThisTheme.FontSize + FontIncrementValue -3
+                }
+                );
+                
+                Set(ControlsFontSizes,
+                    {
+                        LabelFontSize:                  FontSizes.TextMain,
+                        ButtonFontSize:                 FontSizes.TextEmphasis,
+                        InputFontSize:                  FontSizes.TextMain,
+                        DropdownFontSize:               FontSizes.TextMain,
+                        ComboBoxFontSize:               FontSizes.TextMain,
+                        DatePickerFontSize:             FontSizes.TextMain,
+                        ListBoxFontSize:                FontSizes.TextMain,
+                        CheckBoxFontSize:               FontSizes.TextMain,
+                        RadioFontSize:                  FontSizes.TextMain,
+                        ToggleFontSize:                 FontSizes.TextMain,
+                        TimerFontSize:                  FontSizes.Title,
+                        BarcodeFontSize:                FontSizes.TextEmphasis,
+                        AddPictureFontSize:             FontSizes.AddPicture,
+                        ImportFontSize:                 FontSizes.TextEmphasis,
+                        ExportFontSize:                 FontSizes.TextEmphasis,
+                        ChartLegendFontSize:            FontSizes.AddPicture,
+                        GallerytitleLabelFontSize:      FontSizes.Title,
+                        GallerysubtitleLabelFontSize:   FontSizes.SubTitle,
+                        GallerycontentLabelFontSize:    FontSizes.Content,
+                        AttachmentFontSize:             FontSizes.TextMain,
+                        FormTitleLabelFontSize:         FontSizes.TextMain,
+                        DataTableFontSize:              FontSizes.TextMain,
+                        DataTableHeadingFontSize:       FontSizes.TextEmphasis
+                    }
+                );
+    AccessibilityThemeEnabled: =true
+    AdminSettingsScreen: =App.ActiveScreen
+    CMPControlsTheme: |-
+        ={
+        
+            LabelTextColor:                     cmp_Header.CMPThisTheme.defaultTextColor,
+            LabelFill:                          Transparent,
+            LabelBorderColor:                   cmp_Header.CMPThisTheme.Color2,
+            LabelFont:                          cmp_Header.CMPThisTheme.Font,
+        
+            ButtonColor:                        cmp_Header.CMPThisTheme.Color2Text,
+            ButtonFill:                         cmp_Header.CMPThisTheme.Color2,
+            ButtonBorderColor:                  cmp_Header.CMPThisTheme.Color1,
+            ButtonHoverColor:                   ColorFade(cmp_Header.CMPThisTheme.Color2Text, 20%),
+            ButtonHoverFill:                    ColorFade(cmp_Header.CMPThisTheme.Color2,     20%),
+            ButtonHoverBorderColor:             ColorFade(cmp_Header.CMPThisTheme.Color1,     20%),
+            ButtonPressedColor:                 cmp_Header.CMPThisTheme.Color2,
+            ButtonPressedFill:                  cmp_Header.CMPThisTheme.Color2Text,
+            ButtonPressedBorderColor:           cmp_Header.CMPThisTheme.Color2,
+            ButtonFont:                         cmp_Header.CMPThisTheme.Font,
+        
+            InputTextColor:                     cmp_Header.CMPThisTheme.Color1Text,
+            InputFill:                          cmp_Header.CMPThisTheme.Color1,
+            InputBorderColor:                   cmp_Header.CMPThisTheme.Color2,
+            InputHoverColor:                    ColorFade(cmp_Header.CMPThisTheme.Color1Text, 20%),
+            InputHoverFill:                     ColorFade(cmp_Header.CMPThisTheme.Color1, 20%),
+            InputHoverBorderColor:              ColorFade(cmp_Header.CMPThisTheme.Color2, 20%),
+            InputPressedColor:                  cmp_Header.CMPThisTheme.Color1Text,
+            InputPressedFill:                   cmp_Header.CMPThisTheme.Color1,
+            InputPressedBorderColor:            ColorFade(cmp_Header.CMPThisTheme.Color2, 20%),
+            InputFont:                          cmp_Header.CMPThisTheme.Font,
+            InputDelayOutput:                   true,
+        
+            PenInputInkColor:                   cmp_Header.CMPThisTheme.defaultTextColor,
+            PenInputBorderColor:                cmp_Header.CMPThisTheme.defaultTextColor,
+            PenInputInkSize:                    2,
+            PenInputBackground:                 Transparent,
+        
+            DropdownTextColor:                  cmp_Header.CMPThisTheme.Color1Text,
+            DropdownFill:                       cmp_Header.CMPThisTheme.Color1,
+            DropdownBorderColor:                cmp_Header.CMPThisTheme.Color2,
+            DropdownHoverColor:                 ColorFade(cmp_Header.CMPThisTheme.Color1Text, 20%),
+            DropdownHoverFill:                  ColorFade(cmp_Header.CMPThisTheme.Color1, 20%),
+            DropdownHoverBorderColor:           ColorFade(cmp_Header.CMPThisTheme.Color2, 20%),
+            DropdownPressedColor:               cmp_Header.CMPThisTheme.Color1,
+            DropdownPressedFill:                cmp_Header.CMPThisTheme.Color1Text,
+            DropdownPressedBorderColor:         ColorFade(cmp_Header.CMPThisTheme.Color2, -20%),
+            DropdownChevronBackground:          cmp_Header.CMPThisTheme.Color2,
+            DropdownChevronFill:                cmp_Header.CMPThisTheme.Color2Text,
+            DropdownChevronHoverBackground:     ColorFade(cmp_Header.CMPThisTheme.Color2, 20%),
+            DropdownChevronHoverFill:           ColorFade(cmp_Header.CMPThisTheme.Color2Text, 20%),
+            DropdownSelectionColor:             cmp_Header.CMPThisTheme.Color3Text,
+            DropdownSelectionFill:              cmp_Header.CMPThisTheme.Color3,
+            DropdownFont:                       cmp_Header.CMPThisTheme.Font,
+        
+            ComboBoxTextColor:                  cmp_Header.CMPThisTheme.Color1Text,
+            ComboBoxFill:                       cmp_Header.CMPThisTheme.Color1,
+            ComboBoxBorderColor:                cmp_Header.CMPThisTheme.Color2,
+            ComboBoxHoverColor:                 ColorFade(cmp_Header.CMPThisTheme.Color1Text, 20%),
+            ComboBoxHoverFill:                  ColorFade(cmp_Header.CMPThisTheme.Color1, 20%),
+            ComboBoxHoverBorderColor:           ColorFade(cmp_Header.CMPThisTheme.Color2, 20%),
+            ComboBoxPressedColor:               cmp_Header.CMPThisTheme.Color2Text,
+            ComboBoxPressedFill:                cmp_Header.CMPThisTheme.Color2,
+            ComboBoxPressedBorderColor:         ColorFade(cmp_Header.CMPThisTheme.Color2, -20%),
+            ComboBoxSelectionColor:             cmp_Header.CMPThisTheme.Color3Text,
+            ComboBoxSelectionFill:              cmp_Header.CMPThisTheme.Color3,
+            ComboBoxChevronBackground:          cmp_Header.CMPThisTheme.Color2,
+            ComboBoxChevronFill:                cmp_Header.CMPThisTheme.Color2Text,
+            ComboBoxChevronHoverBackground:     ColorFade(cmp_Header.CMPThisTheme.Color2, 20%),
+            ComboBoxChevronHoverFill:           ColorFade(cmp_Header.CMPThisTheme.Color2Text, 20%),
+            ComboBoxFont:                       cmp_Header.CMPThisTheme.Font,
+            ComboBoxMoreItemsButtonColor:       cmp_Header.CMPThisTheme.Color2,
+            
+            DatePickerColor:                    cmp_Header.CMPThisTheme.Color1Text,
+            DatePickerFill:                     cmp_Header.CMPThisTheme.Color1,
+            DatePickerBorderColor:              cmp_Header.CMPThisTheme.Color2,
+            DatePickerIconFill:                 cmp_Header.CMPThisTheme.Color2Text,
+            DatePickerIconBackground:           cmp_Header.CMPThisTheme.Color2,
+            DatePickerSelectedDateFill:         cmp_Header.CMPThisTheme.Color2,
+            DatePickerHoverDateFill:            cmp_Header.CMPThisTheme.Color3Text,
+            DatePickerHeaderFill:               cmp_Header.CMPThisTheme.Color3,
+            DatePickerFont:                     cmp_Header.CMPThisTheme.Font,
+            //
+            // Sancho's note:
+            // Tried to template these but IDE import only picks up design properties currently :(
+            //
+            // DatePickerStartOfWeek:          StartOfWeek.Monday,
+            // DatePickerFormat:               DateTimeFormat.ShortDate,
+            // DatePickerDefaultDate:          Today(),
+            // DatePickerDateTimeZone:         DateTimeZone.Local,
+            // DatePickerLanguage:             "en-GB",
+        
+        
+            ListBoxTextColor:                   cmp_Header.CMPThisTheme.Color1Text,
+            ListBoxFill:                        cmp_Header.CMPThisTheme.Color1,
+            ListBoxBorderColor:                 cmp_Header.CMPThisTheme.Color2,
+            ListBoxHoverColor:                  ColorFade(cmp_Header.CMPThisTheme.Color1Text, 20%),
+            ListBoxHoverFill:                   ColorFade(cmp_Header.CMPThisTheme.Color1, 20%),
+            ListBoxHoverBorderColor:            ColorFade(cmp_Header.CMPThisTheme.Color2, 20%),
+            ListBoxPressedColor:                cmp_Header.CMPThisTheme.Color2Text,
+            ListBoxPressedFill:                 cmp_Header.CMPThisTheme.Color2,
+            ListBoxPressedBorderColor:          ColorFade(cmp_Header.CMPThisTheme.Color2, -20%),       
+            ListBoxSelectionColor:              cmp_Header.CMPThisTheme.Color3Text,
+            ListBoxSelectionFill:               cmp_Header.CMPThisTheme.Color3,
+            ListBoxFont:                        cmp_Header.CMPThisTheme.Font,
+            ListBoxItemPaddingLeft:             10,
+        
+            CheckBoxTextColor:                  cmp_Header.CMPThisTheme.defaultTextColor,
+            CheckBoxInnerBackground:            If(
+                                                    cmp_Header.CMPThisTheme.DarkMode,
+                                                    ColorFade(cmp_Header.CMPThisTheme.Color1, -50%),
+                                                    ColorFade(cmp_Header.CMPThisTheme.Color1, 50%)
+                                                ),
+            CheckBoxBorderColor:                cmp_Header.CMPThisTheme.Color2,
+            CheckBoxHoverColor:                 ColorFade(cmp_Header.CMPThisTheme.defaultTextColor, 20%),
+            CheckBoxHoverFill:                  ColorFade(Transparent, 20%),
+            CheckBoxHoverBorderColor:           ColorFade(cmp_Header.CMPThisTheme.Color2, 20%),
+            CheckBoxPressedColor:               ColorFade(cmp_Header.CMPThisTheme.defaultTextColor, -20%),
+            CheckBoxPressedFill:                ColorFade(Transparent, -20%),
+            CheckBoxPressedBorderColor:         ColorFade(cmp_Header.CMPThisTheme.Color2, -20%),
+            CheckBoxOutsideBorderColor:         cmp_Header.CMPThisTheme.Color2,
+            CheckBoxFill:                       Transparent,
+            CheckBoxCheckmarkFill:              cmp_Header.CMPThisTheme.defaultTextColor,
+            CheckBoxFont:                       cmp_Header.CMPThisTheme.Font,
+            CheckBoxSize:                       40,
+            
+            RadioTextColor:                     cmp_Header.CMPThisTheme.defaultTextColor,
+            RadioOutsideFill:                   Transparent,
+            RadioOutsideBorderColor:            cmp_Header.CMPThisTheme.Color2,
+            RadioHoverColor:                    cmp_Header.CMPThisTheme.Color2,
+            RadioHoverFill:                     Transparent,
+            RadioPressedColor:                  cmp_Header.CMPThisTheme.defaultTextColor,
+            RadioPressedFill:                   Transparent,
+            RadioBorderColor:                   cmp_Header.CMPThisTheme.Color2,
+            RadioBackgroundFill:                If(cmp_Header.CMPThisTheme.DarkMode,
+                                                    ColorFade(cmp_Header.CMPThisTheme.Color1, -50%),
+                                                    ColorFade(cmp_Header.CMPThisTheme.Color1, 50%)
+                                                ),
+            RadioSelectionFill:                 cmp_Header.CMPThisTheme.defaultTextColor,
+            RadioFont:                          cmp_Header.CMPThisTheme.Font,
+            RadioSize:                          40,
+            RadioLayout:                        Layout.Horizontal,
+            
+            ToggleTextColor:                    cmp_Header.CMPThisTheme.defaultTextColor,
+            ToggleBorderColor:                  cmp_Header.CMPThisTheme.Color2,
+            ToggleHandleFill:                   cmp_Header.CMPThisTheme.Color2,
+            ToggleFalseFill:                    cmp_Header.CMPThisTheme.Color1,
+            ToggleTrueFill:                     cmp_Header.CMPThisTheme.Color3,
+            ToggleFalseHoverFill:               ColorFade(cmp_Header.CMPThisTheme.Color1, 20%),
+            ToggleTrueHoverFill:                ColorFade(cmp_Header.CMPThisTheme.Color3, 20%),
+            ToggleHoverBorderColor:             ColorFade(cmp_Header.CMPThisTheme.Color2, 20%),
+            TogglePressedBorderColor:           ColorFade(cmp_Header.CMPThisTheme.Color2, -20%),
+            ToggleFont:                         cmp_Header.CMPThisTheme.Font,
+            ToggleTextPosition:                 TextPosition.Left,
+        
+            SliderBorderColor:                  cmp_Header.CMPThisTheme.Color2,
+            SliderHandleFill:                   White,
+            SliderBackground:                   cmp_Header.CMPThisTheme.Color3,
+            SliderValueFill:                    cmp_Header.CMPThisTheme.Color2,
+            SliderHandleHoverFill:              ColorFade(White, 20%),
+            SliderHandleActiveFill:             ColorFade(White, 40%),
+            SliderRailHoverFill:                ColorFade(cmp_Header.CMPThisTheme.Color3,  20%),
+            SliderValueHoverFill:               ColorFade(cmp_Header.CMPThisTheme.Color2,  20%),
+            SliderHoverBorderColor:             ColorFade(cmp_Header.CMPThisTheme.Color2,  20%),
+            SliderPressedBorderColor:           ColorFade(cmp_Header.CMPThisTheme.Color2, -20%),
+            SliderRailThickness:                24,
+            SliderHandleSize:                   24,
+        
+            RatingItemFill:                     cmp_Header.CMPThisTheme.Color2,
+            RatingFill:                         Transparent,
+            RatingBorderColor:                  cmp_Header.CMPThisTheme.Color2,
+        
+            TimerTextColor:                     cmp_Header.CMPThisTheme.Color1Text,
+            TimerFill:                          cmp_Header.CMPThisTheme.Color1,
+            TimerBorderColor:                   ColorFade(cmp_Header.CMPThisTheme.Color1, -20%),
+            TimerHoverColor:                    ColorFade(cmp_Header.CMPThisTheme.Color1Text, 20%),
+            TimerHoverFill:                     ColorFade(cmp_Header.CMPThisTheme.Color1,  20%),
+            TimerHoverBorderColor:              ColorFade(cmp_Header.CMPThisTheme.Color1,  20%),
+            TimerPressedColor:                  cmp_Header.CMPThisTheme.Color1,
+            TimerPressedFill:                   cmp_Header.CMPThisTheme.Color1Text,
+            TimerPressedBorderColor:            cmp_Header.CMPThisTheme.Color1,
+            TimerFont:                          cmp_Header.CMPThisTheme.Font,
+            
+            ImageFill:                          Transparent,
+            ImageBorderColor:                   Transparent,
+            ImageHoverFill:                     Transparent,
+            ImageHoverBorderColor:              Transparent,
+            ImagePressedFill:                   Transparent,
+            ImagePressedBorderColor:            Transparent,
+        
+            CameraBorderColor:                  cmp_Header.CMPThisTheme.Color2,
+        
+            BarcodeColor:                       cmp_Header.CMPThisTheme.Color1Text,
+            BarcodeFill:                        cmp_Header.CMPThisTheme.Color1,
+            BarcodeBorderColor:                 cmp_Header.CMPThisTheme.Color2,
+            BarcodeHoverColor:                  ColorFade(cmp_Header.CMPThisTheme.Color1Text, 20%),
+            BarcodeHoverFill:                   ColorFade(cmp_Header.CMPThisTheme.Color1, 20%),
+            BarcodeHoverBorderColor:            ColorFade(cmp_Header.CMPThisTheme.Color2, 20%),
+            BarcodePressedColor:                cmp_Header.CMPThisTheme.Color1,
+            BarcodePressedFill:                 cmp_Header.CMPThisTheme.Color1Text,
+            BarcodePressedBorderColor:          cmp_Header.CMPThisTheme.Color1,
+            BarcodeFont:                        cmp_Header.CMPThisTheme.Font,
+            
+            VideoFill:                          cmp_Header.CMPThisTheme.Color1,
+            VideoBorderColor:                   cmp_Header.CMPThisTheme.Color2,
+        
+            StreamColor:                        cmp_Header.CMPThisTheme.defaultTextColor,
+            StreamFill:                         Transparent,
+            StreamBorderColor:                  cmp_Header.CMPThisTheme.Color2,
+        
+            AudioFill:                          cmp_Header.CMPThisTheme.Color1,
+            AudioBorderColor:                   ColorFade(cmp_Header.CMPThisTheme.Color1, -20%),
+        
+            MicrophoneColor:                    cmp_Header.CMPThisTheme.Color1Text,
+            MicrophoneFill:                     cmp_Header.CMPThisTheme.Color1,
+            MicrophoneBorderColor:              ColorFade(cmp_Header.CMPThisTheme.Color1, -20%),
+            MicrophoneHoverColor:               ColorFade(cmp_Header.CMPThisTheme.Color1Text, 20%),
+            MicrophoneHoverFill:                ColorFade(cmp_Header.CMPThisTheme.Color1, 20%),
+            MicrophoneHoverBorderColor:         cmp_Header.CMPThisTheme.Color1,
+            MicrophonePressedColor:             ColorFade(cmp_Header.CMPThisTheme.Color1Text, -20%),
+            MicrophonePressedFill:              ColorFade(cmp_Header.CMPThisTheme.Color1, -20%),
+            MicrophonePressedBorderColor:       ColorFade(cmp_Header.CMPThisTheme.Color1, -40%),
+        
+            AddPictureColor:                    cmp_Header.CMPThisTheme.Color1Text,
+            AddPictureFill:                     cmp_Header.CMPThisTheme.Color1,
+            AddPictureBorderColor:              cmp_Header.CMPThisTheme.Color2,
+            AddPictureHoverColor:               cmp_Header.CMPThisTheme.Color1Text,
+            AddPictureHoverFill:                ColorFade(cmp_Header.CMPThisTheme.Color1, 20%),
+            AddPictureHoverBorderColor:         ColorFade(cmp_Header.CMPThisTheme.Color2, 20%),
+            AddPicturePressedColor:             cmp_Header.CMPThisTheme.Color1Text,
+            AddPicturePressedFill:              ColorFade(cmp_Header.CMPThisTheme.Color1, -20%),
+            AddPicturePressedBorderColor:       ColorFade(cmp_Header.CMPThisTheme.Color2, -20%),
+            AddPictureFont:                     cmp_Header.CMPThisTheme.Font,
+        
+            ImportColor:                        cmp_Header.CMPThisTheme.Color1Text,
+            ImportFill:                         cmp_Header.CMPThisTheme.Color1,
+            ImportBorderColor:                  ColorFade(cmp_Header.CMPThisTheme.Color1, -20%),
+            ImportFont:                         cmp_Header.CMPThisTheme.Font,
+            ImportHoverColor:                   ColorFade(cmp_Header.CMPThisTheme.Color1Text, 20%),
+            ImportHoverFill:                    ColorFade(cmp_Header.CMPThisTheme.Color1, 20%),
+            ImportHoverBorderColor:             cmp_Header.CMPThisTheme.Color1,
+            ImportPressedColor:                 cmp_Header.CMPThisTheme.Color1Text,
+            ImportPressedFill:                  ColorFade(cmp_Header.CMPThisTheme.Color1, -20%),
+            ImportPressedBorderColor:           ColorFade(cmp_Header.CMPThisTheme.Color1, -40%),
+        
+            ExportColor:                        cmp_Header.CMPThisTheme.Color1Text,
+            ExportFill:                         cmp_Header.CMPThisTheme.Color1,
+            ExportBorderColor:                  ColorFade(cmp_Header.CMPThisTheme.Color1, -20%),
+            ExportFont:                         cmp_Header.CMPThisTheme.Font,
+            ExportHoverColor:                   ColorFade(cmp_Header.CMPThisTheme.Color1Text, 20%),
+            ExportHoverFill:                    ColorFade(cmp_Header.CMPThisTheme.Color1, 20%),
+            ExportHoverBorderColor:             cmp_Header.CMPThisTheme.Color1,
+            ExportPressedColor:                 cmp_Header.CMPThisTheme.Color1Text,
+            ExportPressedFill:                  ColorFade(cmp_Header.CMPThisTheme.Color1, -20%),
+            ExportPressedBorderColor:           ColorFade(cmp_Header.CMPThisTheme.Color1, -40%),
+        
+            ChartLegendColor:                   cmp_Header.CMPThisTheme.defaultTextColor,
+            ChartLegendFont:                    cmp_Header.CMPThisTheme.Font,
+        
+            /////////////////
+            //
+            // Gallery Items
+            //
+            GalleryFill:                        RGBA(0,0,0,0),
+            GalleryBorderColor:                 cmp_Header.CMPThisTheme.Color2,
+            //
+            // Gallery Title and Subtitle
+            //
+            GallerytitleLabelColor:             cmp_Header.CMPThisTheme.Color3,
+            GallerysubtitleLabelColor:          cmp_Header.CMPThisTheme.defaultTextColor,
+            GallerytitleLabelFont:              cmp_Header.CMPThisTheme.Font,
+            GallerysubtitleLabelFont:           cmp_Header.CMPThisTheme.Font,
+            //
+            // Body content label in Flexible Height Gallery
+            //
+            GallerycontentLabelColor:           cmp_Header.CMPThisTheme.defaultTextColor,
+            GallerycontentLabelFont:            cmp_Header.CMPThisTheme.Font,
+            //
+            /////////////////
+        
+            /////////////////
+            //
+            // Icons
+            //
+            // This will apply to all icons
+            // (excluding new screen icons used as BGs)
+            //
+            // IconFill is also used for the background shape of
+            // the New Screen headers in: List
+            //
+            IconFill:                           cmp_Header.CMPThisTheme.Color3,
+            IconHoverFill:                      cmp_Header.CMPThisTheme.Color3Text,
+            IconPressedFill:                    cmp_Header.CMPThisTheme.Color1,
+            // Background set to transparent by default to preserve New Screen-based icons
+            IconBackground:                     Transparent,
+            IconHoverBackground:                Transparent,
+            IconPressedBackground:              Transparent,
+            IconBorderColor:                    ColorFade(cmp_Header.CMPThisTheme.Color3, -20%),
+            IconHoverBorderColor:               cmp_Header.CMPThisTheme.Color3,
+            IconPressedBorderColor:             ColorFade(cmp_Header.CMPThisTheme.Color3, -40%),
+            
+        
+            AttachmentTextColor:                cmp_Header.CMPThisTheme.Color1Text,
+            AttachmentFill:                     cmp_Header.CMPThisTheme.Color1,
+            AttachmentBorderColor:              cmp_Header.CMPThisTheme.Color2,
+            AttachmentHoverColor:               ColorFade(cmp_Header.CMPThisTheme.Color1Text, 20%),
+            AttachmentHoverFill:                ColorFade(cmp_Header.CMPThisTheme.Color1, 20%),
+            AttachmentHoverBorderColor:         ColorFade(cmp_Header.CMPThisTheme.Color2, 20%),
+            AttachmentFont:                     cmp_Header.CMPThisTheme.Font,
+            AttachmentPressedColor:             cmp_Header.CMPThisTheme.Color2Text,
+            AttachmentPressedFill:              cmp_Header.CMPThisTheme.Color2,
+            AttachmentItemColor:                cmp_Header.CMPThisTheme.Color3Text,
+            AttachmentItemFill:                 cmp_Header.CMPThisTheme.Color3,
+            AttachmentItemHoverColor:           ColorFade(cmp_Header.CMPThisTheme.Color3Text, 20%),
+            AttachmentItemHoverFill:            ColorFade(cmp_Header.CMPThisTheme.Color3, 20%),
+        
+            /////////////////
+            //
+            // Forms
+            //
+            EditFormBorderColor:                cmp_Header.CMPThisTheme.Color2,
+            EditFormFill:                       If( 
+                                                    cmp_Header.CMPThisTheme.DarkMode,
+                                                    ColorFade(cmp_Header.CMPThisTheme.Color1, -50%),
+                                                    ColorFade(cmp_Header.CMPThisTheme.Color1, 50%)
+                                                ),
+            ViewFormBorderColor:                cmp_Header.CMPThisTheme.Color2,
+            ViewFormFill:                       If(
+                                                    cmp_Header.CMPThisTheme.DarkMode,
+                                                    ColorFade(cmp_Header.CMPThisTheme.Color1, -50%),
+                                                    ColorFade(cmp_Header.CMPThisTheme.Color1, 50%)
+                                                ),
+            // Form Title and * fields
+            FormTitleLabelColor:                cmp_Header.CMPThisTheme.Color3,
+            FormTitleLabelFont:                 cmp_Header.CMPThisTheme.Font,
+        
+            /////////////////
+            //
+            // Screen
+            //
+            ScreenBackground:                   If( 
+                                                    cmp_Header.CMPThisTheme.DarkMode,
+                                                    ColorFade(cmp_Header.CMPThisTheme.Color1, -50%),
+                                                    ColorFade(cmp_Header.CMPThisTheme.Color1, 50%)
+                                                ),
+        
+            /////////////////
+            //
+            // Data Table
+            //
+            //
+            // NotUsed
+                DataTableColor1:                    cmp_Header.CMPThisTheme.Color1,
+                DataTableColor2:                    cmp_Header.CMPThisTheme.Color2,
+            // Border Lines between headers
+            DataTableColor3:                    cmp_Header.CMPThisTheme.Color3,
+            //
+            DataTableColor:                     cmp_Header.CMPThisTheme.Color1Text,
+            DataTableFill:                      cmp_Header.CMPThisTheme.Color1,
+            DataTableColorInverted:             cmp_Header.CMPThisTheme.Color3Text,
+            DataTableSelectedColor:             cmp_Header.CMPThisTheme.Color3Text,
+            DataTableSelectedFill:              cmp_Header.CMPThisTheme.Color3,
+            DataTableHoverColor:                cmp_Header.CMPThisTheme.Color2Text,
+            DataTableHoverFill:                 cmp_Header.CMPThisTheme.Color2,
+            DataTableBorderColor:               cmp_Header.CMPThisTheme.Color2,
+            DataTableInputFill:                 cmp_Header.CMPThisTheme.Color1,
+            DataTableFont:                      cmp_Header.CMPThisTheme.Font,
+            DataTableHeadingFont:               cmp_Header.CMPThisTheme.Font,
+            DataTableHeadingColor:              cmp_Header.CMPThisTheme.Color2Text,
+            DataTableHeadingFill:               cmp_Header.CMPThisTheme.Color2,
+            DataTableFontWeight:                FontWeight.Normal,
+            DataTableHeadingFontWeight:         FontWeight.Semibold,
+        
+            /////////////////
+            //
+            // PDFViewer & PowerBI
+            //
+            PdfViewerFill:                      ColorFade(cmp_Header.CMPThisTheme.Color1, -50%),
+            PdfViewerBorderColor:               cmp_Header.CMPThisTheme.Color2,
+            PowerBIBorderColor:                 cmp_Header.CMPThisTheme.Color2,
+            
+            //////////////////////////////////////////////////
+            //                                              //
+            //  These apply to the Insert>New Screen items  //
+            //                                              //
+            //////////////////////////////////////////////////
+            //
+            // Title Label on New Screen Headers
+            //
+            invertedBkgHeaderLabelColor:        cmp_Header.CMPThisTheme.Color2Text,
+            //
+            // New Screen Header background shape for:
+            // Scrollable, Email, People, Meeting,
+            // 
+            // also selected tab shape colour on Meeting screen
+            // see: IconFill also used for other new screen header shapes
+            //
+            IconFillInverted:                   cmp_Header.CMPThisTheme.Color2,
+            //
+            // Label on Success Screen, Tutorial Screen
+            // To / Subject / Message Title on Email screen
+            // SubTitle label on PeopleBrowseGallery on Email Screen
+            // Attendees/Subject/Message labels on Meeting screen
+            // No Times/Locations labels on Schedule tab of Meeting Screen
+            // All Left-side labels, and right-side time labels on Calendar screen
+            // ALSO:
+            // SubHeader Text Colour on Calendar Screen - NB this is same as BG colour
+            // SubHeader Text Colour on Schedule tab of Meeting screen - NB this is same as BG colour
+            //
+            basicNoSizeLabelColor:              cmp_Header.CMPThisTheme.Color3,
+            //
+            // Tick on Success Screen
+            // Send Icon Color on Email Screen
+            //
+            invertedBkgHeaderIconColor:         cmp_Header.CMPThisTheme.Color3Text,
+            //
+            // Title label and icon color in PeopleGallery on Email Screen, People Screen and Meeting Screen
+            //
+            basicNoSizeInvertedBkgLabelColor:   cmp_Header.CMPThisTheme.Color3Text,
+            //
+            // Invite & Schedule tab header label on Meeting screen
+            // Rooms list name label on Schedule tab on Meeting Screen
+            //
+            basicNoSizeWeightColorLabelColor:   cmp_Header.CMPThisTheme.defaultTextColor
+        }
+    CMPThisTheme: |-
+        ={
+                Name:                               "Microsoft Blue Light",
+        
+                Color1:                             RGBA(186, 202, 226, 1),
+                Color2:                             RGBA( 56,  96, 178, 1),
+                Color3:                             RGBA(  0,  18, 107, 1),
+                Color1Text:                         RGBA( 15,  15,  15, 1),
+                Color2Text:                         RGBA(245, 245, 245, 1),
+                Color3Text:                         RGBA(245, 245, 245, 1),
+        
+                defaultTextColor:                   RGBA( 15,  15,  15, 1),
+                
+                Font:                               Font.'Segoe UI',
+                FontSize:                           14,
+        
+                DarkMode:                           false
+        }
+    ControlFontSizes: |-
+        ={
+            LabelFontSize:                  cmp_Header.FontSizes.TextMain,
+            ButtonFontSize:                 cmp_Header.FontSizes.TextEmphasis,
+            InputFontSize:                  cmp_Header.FontSizes.TextMain,
+            DropdownFontSize:               cmp_Header.FontSizes.TextMain,
+            ComboBoxFontSize:               cmp_Header.FontSizes.TextMain,
+            DatePickerFontSize:             cmp_Header.FontSizes.TextMain,
+            ListBoxFontSize:                cmp_Header.FontSizes.TextMain,
+            CheckBoxFontSize:               cmp_Header.FontSizes.TextMain,
+            RadioFontSize:                  cmp_Header.FontSizes.TextMain,
+            ToggleFontSize:                 cmp_Header.FontSizes.TextMain,
+            TimerFontSize:                  cmp_Header.FontSizes.Title,
+            BarcodeFontSize:                cmp_Header.FontSizes.TextEmphasis,
+            AddPictureFontSize:             cmp_Header.FontSizes.AddPicture,
+            ImportFontSize:                 cmp_Header.FontSizes.TextEmphasis,
+            ExportFontSize:                 cmp_Header.FontSizes.TextEmphasis,
+            ChartLegendFontSize:            cmp_Header.FontSizes.AddPicture,
+            GallerytitleLabelFontSize:      cmp_Header.FontSizes.Title,
+            GallerysubtitleLabelFontSize:   cmp_Header.FontSizes.SubTitle,
+            GallerycontentLabelFontSize:    cmp_Header.FontSizes.Content,
+            AttachmentFontSize:             cmp_Header.FontSizes.TextMain,
+            FormTitleLabelFontSize:         cmp_Header.FontSizes.TextMain,
+            DataTableFontSize:              cmp_Header.FontSizes.TextMain,
+            DataTableHeadingFontSize:       cmp_Header.FontSizes.TextEmphasis
+        }
+    Fill: =RGBA(0, 0, 0, 0)
+    Flat: =false
+    FontSizeEnabled: =true
+    FontSizes: |-
+        =// PASTE THE NAME OF YOUR FONT SIZES RECORD HERE - ie 'FontSizes'
+        // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+        {
+            TextMain:                       cmp_Header.CMPThisTheme.FontSize -1,
+            TextEmphasis:                   cmp_Header.CMPThisTheme.FontSize +1,
+            Content:                        cmp_Header.CMPThisTheme.FontSize +2,
+            Title:                          cmp_Header.CMPThisTheme.FontSize +6,
+            SubTitle:                       cmp_Header.CMPThisTheme.FontSize +4,
+            AddPicture:                     cmp_Header.CMPThisTheme.FontSize -3
+        }
+    Height: =50
+    OnReset: |-
+        =Set(FontIncrement, 0);
+        Set(AccessibilityThemeSet, (cmp_Header.CMPThisTheme.Name = "MonoChrome Dark"))
+    SettingsButtonEnabled: =true
+    ThemeButtonEnabled: =true
+    ThemeSettingsScreen: =App.ActiveScreen
+    Width: =1366
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    html_BackgroundPanelDropshadow_cmp_Header As htmlViewer:
+        Height: =Parent.Height+btn_TopBarScreenTitle_cmp_Header.X*2
+        HtmlText: |-
+            =If(cmp_Header.Flat,
+               "",
+               "<div style='
+                    margin: 0px;
+                    width: " & Parent.Width  -btn_TopBarScreenTitle_cmp_Header.X
+                                             -btn_TopBarScreenTitle_cmp_Header.X
+                                             -btn_TopBarScreenTitle_cmp_Header.X
+                                             & "px;
+                    height: " & Parent.Height-btn_TopBarScreenTitle_cmp_Header.X
+                                             -btn_TopBarScreenTitle_cmp_Header.X
+                                             -btn_TopBarScreenTitle_cmp_Header.X
+                                             & "px;
+                    border-radius: 10px;
+                    box-shadow: " & btn_TopBarScreenTitle_cmp_Header.X & "px " 
+                                  & btn_TopBarScreenTitle_cmp_Header.X & "px " 
+                                  & btn_TopBarScreenTitle_cmp_Header.X & "px " 
+                                  & If(cmp_Header.CMPThisTheme.DarkMode, "#CCCCCC" , "#444444") & "'>
+                </div>"
+            )
+        PaddingRight: =15.69
+        PaddingTop: =15.69
+        Size: =34.51
+        Visible: =!cmp_Header.Flat
+        Width: =4310.60
+        X: =0.00
+        Y: =0*0
+        ZIndex: =1
+
+    btn_TopBarScreenTitle_cmp_Header As button:
+        BorderColor: =cmp_Header.CMPThisTheme.Color1
+        BorderThickness: =If(cmp_Header.Flat, 0, 2)
+        Color: =cmp_Header.CMPThisTheme.Color3Text
+        DisplayMode: =DisplayMode.View
+        Fill: =cmp_Header.CMPThisTheme.Color3
+        Font: =cmp_Header.CMPThisTheme.Font
+        Height: =cmp_Header.Height - Self.X*2
+        HoverBorderColor: =Self.BorderColor
+        HoverColor: =Self.Color
+        HoverFill: =Self.Fill
+        PaddingRight: =31.36
+        PaddingTop: =31.36
+        PressedBorderColor: =Self.BorderColor
+        PressedColor: =Self.Color
+        PressedFill: =Self.Fill
+        Size: =73.21
+        TabIndex: =-1
+        Text: =App.ActiveScreen.Name
+        Width: =4260.38
+        X: =12.54
+        Y: =Self.X
+        ZIndex: =2
+
+    ico_ThemeSettings_cmp_Header As icon.Settings:
+        AccessibleLabel: ="Navigate to Settings Menu"
+        BorderColor: =cmp_Header.CMPThisTheme.Color3Text
+        Color: =cmp_Header.CMPThisTheme.Color3Text
+        DisabledFill: =ColorFade(ico_ThemeSettings_cmp_Header.Fill, -80%)
+        Fill: =cmp_Header.CMPThisTheme.Color3
+        Height: =btn_TopBarScreenTitle_cmp_Header.Height -4
+        HoverBorderColor: =ColorFade(ico_ThemeSettings_cmp_Header.BorderColor, 20%)
+        HoverColor: =cmp_Header.CMPThisTheme.Color2
+        HoverFill: =cmp_Header.CMPThisTheme.Color2Text
+        Icon: =Icon.ColorPicker
+        OnSelect: =Navigate(cmp_Header.ThemeSettingsScreen, ScreenTransition.Fade)
+        PaddingBottom: =Self.Width/10
+        PaddingLeft: =Self.Width/10
+        PaddingRight: =11.92
+        PaddingTop: =11.92
+        PressedBorderColor: =ColorFade(ico_ThemeSettings_cmp_Header.BorderColor, -20%)
+        PressedColor: =cmp_Header.CMPThisTheme.Color1Text
+        PressedFill: =cmp_Header.CMPThisTheme.Color1
+        TabIndex: =0
+        Tooltip: ="Navigate to Theme Settings Screen"
+        Visible: =cmp_Header.ThemeButtonEnabled
+        Width: =119.21
+        X: =4141.17
+        Y: =btn_TopBarScreenTitle_cmp_Header.Y + (btn_TopBarScreenTitle_cmp_Header.Height - Self.Height)/2
+        ZIndex: =3
+
+    ico_AdminSettings_cmp_Header As icon.Settings:
+        AccessibleLabel: ="Navigate to Settings Menu"
+        BorderColor: =cmp_Header.CMPThisTheme.Color3Text
+        Color: =cmp_Header.CMPThisTheme.Color3Text
+        DisabledFill: =ColorFade(ico_AdminSettings_cmp_Header.Fill, -80%)
+        Fill: =cmp_Header.CMPThisTheme.Color3
+        Height: =btn_TopBarScreenTitle_cmp_Header.Height -4
+        HoverBorderColor: =ColorFade(ico_AdminSettings_cmp_Header.BorderColor, 20%)
+        HoverColor: =cmp_Header.CMPThisTheme.Color2
+        HoverFill: =cmp_Header.CMPThisTheme.Color2Text
+        Icon: =Icon.Settings
+        OnSelect: =Navigate(cmp_Header.AdminSettingsScreen, ScreenTransition.Fade)
+        PaddingBottom: =Self.Width/10
+        PaddingLeft: =Self.Width/10
+        PaddingRight: =11.92
+        PaddingTop: =11.92
+        PressedBorderColor: =ColorFade(ico_AdminSettings_cmp_Header.BorderColor, -20%)
+        PressedColor: =cmp_Header.CMPThisTheme.Color1Text
+        PressedFill: =cmp_Header.CMPThisTheme.Color1
+        TabIndex: =0
+        Tooltip: ="Navigate to Admin Settings screen"
+        Visible: =cmp_Header.SettingsButtonEnabled
+        Width: =119.21
+        X: =4015.68
+        Y: =btn_TopBarScreenTitle_cmp_Header.Y + (btn_TopBarScreenTitle_cmp_Header.Height - Self.Height)/2
+        ZIndex: =4
+
+    ico_IncreaseFontSize_cmp_Header As icon.ArrowUp:
+        AccessibleLabel: ="increase font size"
+        BorderColor: =cmp_Header.CMPThisTheme.Color3Text
+        Color: =cmp_Header.CMPThisTheme.Color3Text
+        Fill: =cmp_Header.CMPThisTheme.Color3
+        Height: =btn_TopBarScreenTitle_cmp_Header.Height-4
+        HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+        HoverColor: =cmp_Header.CMPThisTheme.Color2
+        HoverFill: =cmp_Header.CMPThisTheme.Color2Text
+        Icon: =Icon.ArrowUp
+        OnSelect: |
+            =Set(FontIncrement, 0 + FontIncrement + 1);
+            cmp_Header.SetFontSize(FontIncrement)
+        PaddingBottom: =btn_TopBarScreenTitle_cmp_Header.Height*10%
+        PaddingRight: =0.00
+        PaddingTop: =13.19
+        PressedBorderColor: =ColorFade(Self.BorderColor, -20%)
+        PressedColor: =cmp_Header.CMPThisTheme.Color1Text
+        PressedFill: =cmp_Header.CMPThisTheme.Color1
+        TabIndex: =0
+        Visible: =cmp_Header.FontSizeEnabled
+        Width: =71.54
+        X: =3875.15
+        Y: =btn_TopBarScreenTitle_cmp_Header.Y +2
+        ZIndex: =5
+
+    ico_DecreaseFontSize_cmp_Header As icon.ArrowDown:
+        AccessibleLabel: ="decrease font size"
+        BorderColor: =cmp_Header.CMPThisTheme.Color3Text
+        Color: =cmp_Header.CMPThisTheme.Color3Text
+        Fill: =cmp_Header.CMPThisTheme.Color3
+        Height: =btn_TopBarScreenTitle_cmp_Header.Height-4
+        HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+        HoverColor: =cmp_Header.CMPThisTheme.Color2
+        HoverFill: =cmp_Header.CMPThisTheme.Color2Text
+        OnSelect: |-
+            =Set(FontIncrement, 0 + FontIncrement - 1);
+            cmp_Header.SetFontSize(FontIncrement)
+        PaddingBottom: =btn_TopBarScreenTitle_cmp_Header.Height*10%
+        PaddingRight: =0.00
+        PaddingTop: =13.19
+        PressedBorderColor: =ColorFade(Self.BorderColor, -20%)
+        PressedColor: =cmp_Header.CMPThisTheme.Color1Text
+        PressedFill: =cmp_Header.CMPThisTheme.Color1
+        TabIndex: =0
+        Visible: =cmp_Header.FontSizeEnabled
+        Width: =71.54
+        X: =3797.32
+        Y: =btn_TopBarScreenTitle_cmp_Header.Y+2
+        ZIndex: =6
+
+    btn_FontSize_cmp_Header As button:
+        Align: =Align.Right
+        BorderColor: =RGBA(0,0,0,0)
+        Color: =cmp_Header.CMPThisTheme.Color3Text
+        DisplayMode: =DisplayMode.View
+        Fill: =RGBA(0,0,0,0)
+        Font: =cmp_Header.CMPThisTheme.Font
+        Height: =btn_TopBarScreenTitle_cmp_Header.Height
+        HoverBorderColor: =RGBA(0,0,0,0)
+        HoverColor: =RGBA(0,0,0,0)
+        HoverFill: =RGBA(0,0,0,0)
+        PaddingRight: =31.36
+        PaddingTop: =31.36
+        PressedBorderColor: =RGBA(0,0,0,0)
+        PressedColor: =RGBA(0,0,0,0)
+        PressedFill: =RGBA(0,0,0,0)
+        Size: =73.21
+        TabIndex: =-1
+        Text: ="A"
+        Visible: =cmp_Header.FontSizeEnabled
+        Width: =131.78
+        X: =3665.57
+        Y: =btn_TopBarScreenTitle_cmp_Header.Y
+        ZIndex: =7
+
+    ico_AccessibleTheme_Header As icon.ArrowDown:
+        AccessibleLabel: ="decrease font size"
+        BorderColor: =cmp_Header.CMPThisTheme.Color3Text
+        Color: =If(cmp_Header.CMPThisTheme.Name = "MonoChrome Dark", cmp_Header.CMPThisTheme.Color2, cmp_Header.CMPThisTheme.Color3Text)
+        Fill: =If(cmp_Header.CMPThisTheme.Name = "MonoChrome Dark", cmp_Header.CMPThisTheme.Color2Text, cmp_Header.CMPThisTheme.Color3)
+        Height: =btn_TopBarScreenTitle_cmp_Header.Height-4
+        HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+        HoverColor: =If(cmp_Header.CMPThisTheme.Name = "MonoChrome Dark", cmp_Header.CMPThisTheme.Color1Text, cmp_Header.CMPThisTheme.Color2)
+        HoverFill: =If(cmp_Header.CMPThisTheme.Name = "MonoChrome Dark", cmp_Header.CMPThisTheme.Color1, cmp_Header.CMPThisTheme.Color2Text)
+        Icon: =Icon.View
+        OnSelect: =cmp_Header.SetAccessibleTheme(cmp_Header.CMPThisTheme)
+        PaddingBottom: =btn_TopBarScreenTitle_cmp_Header.Height*10%
+        PaddingLeft: =btn_TopBarScreenTitle_cmp_Header.Height*10%
+        PaddingRight: =13.19
+        PaddingTop: =13.19
+        PressedBorderColor: =ColorFade(Self.BorderColor, -20%)
+        PressedColor: =cmp_Header.CMPThisTheme.Color1Text
+        PressedFill: =cmp_Header.CMPThisTheme.Color1
+        TabIndex: =0
+        Visible: =cmp_Header.AccessibilityThemeEnabled
+        Width: =119.21
+        X: =3540.08
+        Y: =btn_TopBarScreenTitle_cmp_Header.Y+2
+        ZIndex: =8
+
+    shp_BackArrow_cmp_Header As icon.ArrowLeft:
+        AccessibleLabel: ="go back"
+        BorderColor: =cmp_Header.CMPThisTheme.Color3Text
+        Color: =ThisTheme.Color3Text
+        DisabledFill: =ColorFade(shp_BackArrow_cmp_Header.Fill, -80%)
+        Fill: =cmp_Header.CMPThisTheme.Color3
+        Height: =btn_TopBarScreenTitle_cmp_Header.Height-4
+        HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+        HoverColor: =cmp_Header.CMPThisTheme.Color2
+        HoverFill: =cmp_Header.CMPThisTheme.Color2Text
+        Icon: =Icon.ArrowLeft
+        OnSelect: =Back()
+        PaddingBottom: =Self.Width/10
+        PaddingLeft: =Self.Width/10
+        PaddingRight: =11.92
+        PaddingTop: =11.92
+        PressedBorderColor: =ColorFade(Self.BorderColor, -20%)
+        PressedColor: =cmp_Header.CMPThisTheme.Color1Text
+        PressedFill: =cmp_Header.CMPThisTheme.Color1
+        TabIndex: =0
+        Tooltip: ="Navigate Back"
+        Width: =119.21
+        X: =43.93
+        Y: =btn_TopBarScreenTitle_cmp_Header.Y + (btn_TopBarScreenTitle_cmp_Header.Height - Self.Height)/2
+        ZIndex: =9
+

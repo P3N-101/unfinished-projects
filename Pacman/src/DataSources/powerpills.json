@@ -1,0 +1,19 @@
+[
+  {
+    "Data": "[{\"pcx\":32,\"pcy\":72,\"x\":30,\"y\":70},{\"pcx\":532,\"pcy\":72,\"x\":530,\"y\":70},{\"pcx\":32,\"pcy\":472,\"x\":30,\"y\":470},{\"pcx\":532,\"pcy\":472,\"x\":530,\"y\":470}]",
+    "IsSampleData": false,
+    "IsWritable": false,
+    "Name": "powerpills",
+    "OrderedColumnNames": [
+      "y",
+      "x",
+      "pcx",
+      "pcy"
+    ],
+    "OriginalName": "powerpills",
+    "OriginalSchema": "*[pcx:n, pcy:n, x:n, y:n]",
+    "Schema": "*[pcx:n, pcy:n, x:n, y:n]",
+    "Token": "dummyToken",
+    "Type": "StaticDataSourceInfo"
+  }
+]

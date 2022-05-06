@@ -1,0 +1,237 @@
+cmp_Menu_Horizontal As CanvasComponent:
+    ControlsTheme: |-
+        =// PASTE THE NAME OF YOUR THEME RECORD HERE - ie 'ControlsTheme'
+        // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+        //
+        // You can either pass a record in below that contains the values or the record itself.
+        // If you are listing values, you do not need to input all records, only the used ones.
+        //
+        {
+            ButtonColor:                    cmp_Menu_Horizontal.ThisTheme.Color2Text,
+            ButtonFill:                     cmp_Menu_Horizontal.ThisTheme.Color2,
+            ButtonBorderColor:              cmp_Menu_Horizontal.ThisTheme.Color1,
+            ButtonHoverColor:               ColorFade(cmp_Menu_Horizontal.ThisTheme.Color2Text, 20%),
+            ButtonHoverFill:                ColorFade(cmp_Menu_Horizontal.ThisTheme.Color2,     20%),
+            ButtonHoverBorderColor:         ColorFade(cmp_Menu_Horizontal.ThisTheme.Color1,     20%),
+            ButtonPressedColor:             cmp_Menu_Horizontal.ThisTheme.Color2,
+            ButtonPressedFill:              cmp_Menu_Horizontal.ThisTheme.Color2Text,
+            ButtonPressedBorderColor:       cmp_Menu_Horizontal.ThisTheme.Color2,
+            ButtonFont:                     cmp_Menu_Horizontal.ThisTheme.Font,
+            ButtonFontSize:                 cmp_Menu_Horizontal.FontSizes.TextEmphasis,
+            
+            ImageFill:                      Transparent,
+            ImageBorderColor:               Transparent,
+            ImageHoverFill:                 Transparent,
+            ImageHoverBorderColor:          Transparent,
+            ImagePressedFill:               Transparent,
+            ImagePressedBorderColor:        Transparent,
+        
+            GalleryFill:                    RGBA(0,0,0,0),
+            GalleryBorderColor:             cmp_Menu_Horizontal.ThisTheme.Color2,
+        
+            IconFill:                       cmp_Menu_Horizontal.ThisTheme.Color3,
+            IconHoverFill:                  cmp_Menu_Horizontal.ThisTheme.Color2Text,
+            IconPressedFill:                cmp_Menu_Horizontal.ThisTheme.Color1Text,
+            IconBackground:                 RGBA(0,0,0,0),
+            IconHoverBackground:            cmp_Menu_Horizontal.ThisTheme.Color2,
+            IconPressedBackground:          cmp_Menu_Horizontal.ThisTheme.Color1,
+            IconBorderColor:                ColorFade(cmp_Menu_Horizontal.ThisTheme.Color3, -20%),
+            IconHoverBorderColor:           cmp_Menu_Horizontal.ThisTheme.Color3,
+            IconPressedBorderColor:         ColorFade(cmp_Menu_Horizontal.ThisTheme.Color3, -40%)
+        }
+    Fill: =RGBA(0, 0, 0, 0)
+    Flat: =false
+    FontSizes: |-
+        =// PASTE THE NAME OF YOUR FONT SIZES RECORD HERE - ie 'FontSizes'
+        // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+        {
+            TextMain:                       cmp_Menu_Horizontal.ThisTheme.FontSize -1,
+            TextEmphasis:                   cmp_Menu_Horizontal.ThisTheme.FontSize +1,
+            Content:                        cmp_Menu_Horizontal.ThisTheme.FontSize +2,
+            Title:                          cmp_Menu_Horizontal.ThisTheme.FontSize +6,
+            SubTitle:                       cmp_Menu_Horizontal.ThisTheme.FontSize +4,
+            AddPicture:                     cmp_Menu_Horizontal.ThisTheme.FontSize -3
+        }
+    Height: =123
+    ItemsList: |-
+        =// PASTE THE NAME OF YOUR MENU TABLE HERE - ie 'MenuItems'
+        // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+        //
+        // You can either pass a table in below that contains the values or the table itself.
+        // If you are listing values, you do not need to input all records within the table, only the used ones.
+        // ie below I have only passed in the values used by my component
+        Table(
+             {
+                 Name:    "Home",
+                 Tooltip: "Click here to return to the Home Screen",
+                 Icon:    Icon.Home,
+                 Screen: App.ActiveScreen
+             },
+             {
+                 Name:    "New",
+                 Tooltip: "Click here to create a New Item",
+                 Icon:    Icon.Add,
+                 Screen: App.ActiveScreen
+             },
+             {
+                 Name:    "Settings",
+                 Tooltip: "Click here to access the App Settings",
+                 Icon:    Icon.Settings,
+                 Screen: App.ActiveScreen
+             }
+             
+        )
+    TabHighlightColor: |-
+        ="#FFFFFF"
+    ThisTheme: |-
+        =// PASTE THE NAME OF YOUR THEME RECORD HERE - ie 'ThisTheme'
+        // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+        //
+        // You can either pass a record in below that contains the values or the record itself.
+        // If you are listing values, you do not need to input all records, only the used ones.
+        // ie below I have only passed in the values used by my component
+        {
+                Color1:                    RGBA(186, 202, 226, 1),
+                Color2:                    RGBA( 56,  96, 178, 1),
+                Color3:                    RGBA(  0,  18, 107, 1),
+                Color1Text:                RGBA( 15,  15,  15, 1),
+                Color2Text:                RGBA(245, 245, 245, 1),
+                Color3Text:                RGBA(245, 245, 245, 1),
+                Font:                      Font.'Segoe UI',
+                FontSize:                  14,
+                DarkMode:                  false
+        }
+    Width: =640
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    html_BackgroundPanelDropshadow_cmp_Menu_Horiz As htmlViewer:
+        Height: =Parent.Height
+        HtmlText: |-
+            =If(cmp_Menu_Horizontal.Flat,
+               "",
+               "<div style='
+                    margin: 0px;
+                    width: " & Parent.Width  -RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0) 
+                                             -RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0) 
+                                             -RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0)
+                                             -RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0)
+                                             -RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0)
+                                             & "px;
+                    height: " & Parent.Height-RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0) 
+                                             -RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0) 
+                                             -RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0)
+                                             -RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0)
+                                             -RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0)
+                                             & "px;
+                    border-radius: 10px;
+                    box-shadow: " & RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0) & "px "
+                                  & RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0) & "px "
+                                  & RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0) & "px "
+                                  & If(cmp_Menu_Horizontal.ThisTheme.DarkMode, "#CCCCCC" , "#444444") & "'>
+                </div>"
+            )
+        PaddingRight: =15.69
+        PaddingTop: =15.69
+        Size: =34.51
+        Visible: =!cmp_Menu_Horizontal.Flat
+        Width: =2007.84
+        X: =0.00
+        Y: =0*0
+        ZIndex: =1
+
+    btn_MiddlePanel_cmpMenu_Horiz As button:
+        BorderColor: =cmp_Menu_Horizontal.ControlsTheme.ButtonBorderColor
+        BorderThickness: =If(cmp_Menu_Horizontal.Flat, 0, 2)
+        Color: =cmp_Menu_Horizontal.ControlsTheme.ButtonColor
+        Fill: =cmp_Menu_Horizontal.ControlsTheme.ButtonFill
+        Font: =cmp_Menu_Horizontal.ControlsTheme.ButtonFont
+        Height: =MenuGallery_Horiz.Height
+        HoverBorderColor: =cmp_Menu_Horizontal.ControlsTheme.ButtonHoverBorderColor
+        HoverColor: =cmp_Menu_Horizontal.ControlsTheme.ButtonHoverColor
+        HoverFill: =cmp_Menu_Horizontal.ControlsTheme.ButtonHoverFill
+        PaddingRight: =31.36
+        PaddingTop: =31.36
+        PressedBorderColor: =cmp_Menu_Horizontal.ControlsTheme.ButtonPressedBorderColor
+        PressedColor: =cmp_Menu_Horizontal.ControlsTheme.ButtonPressedColor
+        PressedFill: =cmp_Menu_Horizontal.ControlsTheme.ButtonPressedFill
+        Size: =47.05
+        TabIndex: =-1
+        Text: =""
+        Width: =1995.28
+        X: =3.15
+        Y: =MenuGallery_Horiz.Y
+        ZIndex: =2
+
+    "MenuGallery_Horiz As gallery.'BrowseLayout_Horizontal_TwoTextOneImageVariant_ver4.0'":
+        AccessibleLabel: ="horizontal Gallery for screens navigation"
+        BorderColor: =cmp_Menu_Horizontal.ControlsTheme.GalleryBorderColor
+        Fill: =cmp_Menu_Horizontal.ControlsTheme.GalleryFill
+        Height: =Parent.Height-If(cmp_Menu_Horizontal.Flat, 0, (Self.X*4))
+        Items: =cmp_Menu_Horizontal.ItemsList
+        ShowScrollbar: =false
+        TemplatePadding: =0.00
+        TemplateSize: =665.10
+        Width: =1995.28
+        X: =3.15
+        Y: =Self.X
+        ZIndex: =3
+
+        btn_SelectedItem_MenuGallery_Horiz As button:
+            BorderColor: =Transparent
+            Color: =Transparent
+            DisplayMode: =DisplayMode.View
+            Fill: =ColorValue(cmp_Menu_Horizontal.TabHighlightColor)
+            Font: =Font.'Segoe UI'
+            Height: =RoundDown((Parent.TemplateHeight) * 80%, 0)
+            HoverBorderColor: =Transparent
+            HoverColor: =Transparent
+            HoverFill: =Transparent
+            OnSelect: =
+            PaddingRight: =31.36
+            PaddingTop: =31.36
+            PressedBorderColor: =Transparent
+            PressedColor: =Transparent
+            PressedFill: =Transparent
+            Size: =43.93
+            TabIndex: =-1
+            Text: ="Button"
+            Visible: =App.ActiveScreen = ThisItem.Screen
+            Width: =31.36
+            X: =65.89
+            Y: =RoundDown((Parent.TemplateHeight) * 10%, 0)
+            ZIndex: =1
+
+        ico_MenuIcon_Horiz As icon.Add:
+            AccessibleLabel: ="navigate to " & ThisItem.Name
+            BorderColor: =cmp_Menu_Horizontal.ControlsTheme.IconBorderColor
+            Color: =cmp_Menu_Horizontal.ControlsTheme.ButtonColor
+            DisplayMode: =If(App.ActiveScreen = ThisItem.Screen, DisplayMode.Disabled, DisplayMode.Edit)
+            Fill: =cmp_Menu_Horizontal.ControlsTheme.IconBackground
+            Height: =Parent.TemplateHeight * 90%
+            HoverBorderColor: =cmp_Menu_Horizontal.ControlsTheme.ButtonHoverBorderColor
+            HoverColor: =cmp_Menu_Horizontal.ControlsTheme.ButtonHoverColor
+            HoverFill: =cmp_Menu_Horizontal.ControlsTheme.ButtonHoverFill
+            Icon: =ThisItem.Icon
+            OnSelect: |-
+                =//Select this item
+                Select(Parent);
+                //perform some other action?
+                //
+                //then navigate to screen
+                Navigate(ThisItem.Screen);
+            PaddingBottom: =(Parent.TemplateHeight) * 15%
+            PaddingLeft: =(Parent.TemplateWidth) * 15%
+            PaddingRight: =99.75
+            PaddingTop: =56.00
+            PressedBorderColor: =cmp_Menu_Horizontal.ControlsTheme.IconPressedBorderColor
+            PressedColor: =cmp_Menu_Horizontal.ControlsTheme.IconPressedFill
+            PressedFill: =cmp_Menu_Horizontal.ControlsTheme.IconPressedBackground
+            TabIndex: =0
+            Tooltip: =ThisItem.Tooltip
+            Width: =598.58
+            X: =33.23
+            Y: =(Parent.TemplateHeight - Self.Height) * 50%
+            ZIndex: =2
+

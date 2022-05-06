@@ -1,0 +1,126 @@
+"'TM-Header' As CanvasComponent":
+    AdministrationScreen: =App.ActiveScreen
+    Fill: =RGBA(0, 0, 0, 1)
+    Height: =55
+    HomeScreen: =App.ActiveScreen
+    Logo: =
+    OnReset: =
+    RibbonColor: =RGBA(255, 255, 255, 1)
+    RibbonFill: =RGBA(0, 0, 0, 1)
+    Width: =App.Width
+    X: =0
+    Y: =0
+    ZIndex: =12
+
+    lbl_PowerApps As label:
+        Align: =Left
+        BorderColor: =Transparent
+        Color: ='TM-Header'.RibbonColor
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        Fill: =RGBA(0, 0, 0, 0)
+        FocusedBorderColor: =lbl_PowerApps.BorderColor
+        Font: =Font.'Open Sans'
+        FontWeight: =Normal
+        Height: =55
+        HoverBorderColor: =lbl_PowerApps.BorderColor
+        HoverColor: =lbl_PowerApps.Color
+        HoverFill: =lbl_PowerApps.Fill
+        PaddingBottom: =5
+        PaddingLeft: =15
+        PaddingRight: =79.84
+        PaddingTop: =26.61
+        PressedBorderColor: =lbl_PowerApps.BorderColor
+        PressedColor: =lbl_PowerApps.Color
+        PressedFill: =lbl_PowerApps.Fill
+        Size: =79.84
+        Text: ="App Name"
+        Width: =1735.53
+        Wrap: =false
+        X: =1005.39
+        ZIndex: =3
+
+    _seperator As label:
+        BorderColor: =Transparent
+        Color: =RGBA(255,255,255, 1)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        Fill: =RGBA(0, 0, 0, 0)
+        Font: =Font.'Open Sans'
+        Height: =55
+        PaddingBottom: =5
+        PaddingLeft: =5
+        PaddingRight: =26.61
+        PaddingTop: =26.61
+        Size: =95.82
+        Text: ="|"
+        Visible: =If(App.Width > 600,true,false)
+        Width: =122.45
+        X: =2001.97
+        ZIndex: =4
+
+    Image1_1 As image:
+        AccessibleLabel: ="Pensplace Logo"
+        BorderColor: =Transparent
+        Fill: =RGBA(0, 0, 0, 0)
+        FocusedBorderThickness: =2
+        Height: =55
+        HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+        HoverFill: =ColorFade(Self.Fill, 20%)
+        Image: ='TM-Header'.Logo
+        OnSelect: =Navigate('TM-Header'.HomeScreen,ScreenTransition.Fade)
+        PaddingBottom: =0
+        PaddingLeft: =0
+        PaddingRight: =0.00
+        PaddingTop: =0.00
+        PressedBorderColor: =ColorFade(Self.BorderColor, -20%)
+        PressedFill: =ColorFade(Self.Fill, -20%)
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        TabIndex: =2
+        Width: =697.40
+        X: =308.69
+        ZIndex: =5
+
+    lbl_ScreenName As label:
+        BorderColor: =Transparent
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        Fill: =RGBA(0, 0, 0, 0)
+        Font: =Font.'Open Sans'
+        Height: =55
+        PaddingBottom: =5
+        PaddingLeft: =5
+        PaddingRight: =26.61
+        PaddingTop: =26.61
+        Size: =79.84
+        Text: =App.ActiveScreen.Name
+        Visible: =If(App.Width > 600,true,false)
+        Width: =3950.20
+        X: =2121.03
+        ZIndex: =6
+
+    Icon11 As icon.Home:
+        AccessibleLabel: ="Home Icon"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =White
+        DisabledFill: =Self.Fill
+        Fill: =RGBA(0, 0, 0, 0)
+        FocusedBorderThickness: =2
+        Height: =43
+        HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+        HoverColor: =ColorFade(Self.Color, 20%)
+        HoverFill: =Self.Fill
+        Icon: =Icon.Home
+        OnSelect: =Navigate('TM-Header'.HomeScreen,ScreenTransition.Fade)
+        PaddingRight: =0.00
+        PaddingTop: =0.00
+        PressedBorderColor: =ColorFade(Self.BorderColor, -20%)
+        PressedColor: =ColorFade(Self.Color, -20%)
+        PressedFill: =Self.Fill
+        TabIndex: =1
+        Width: =149.93
+        X: =61.76
+        Y: =6
+        ZIndex: =8
+

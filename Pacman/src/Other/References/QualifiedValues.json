@@ -1,0 +1,32 @@
+{
+  "QualifiedValues": [
+    {
+      "Kind": "default.cds_pp_appthemes_forms",
+      "Namespace": "App Themes (Forms)",
+      "Values": {
+        "App Themes main form": "9c2799b1-187b-ec11-8d21-000d3a87431b",
+        "Information": "faf82355-af67-4d9b-8123-c488d71de0a8"
+      }
+    },
+    {
+      "Kind": "default.cds_pp_appsettings_forms",
+      "Namespace": "App Settings (Forms)",
+      "Values": {
+        "Information": "6f23594c-7cf6-4e80-84a6-b8c370a0fea2"
+      }
+    },
+    {
+      "Kind": "default.cds_pp_apptemplate_forms",
+      "Namespace": "App Templates (Forms)",
+      "Values": {
+        "App Template main form": "128414e5-d77b-ec11-8d21-000d3a0ca1c0",
+        "Information": "9a016f34-059c-4012-91ed-dc9f03f60aac"
+      }
+    },
+    {
+      "Kind": "default.cds_importdata_forms",
+      "Namespace": "Import Data (Forms)",
+      "Values": {}
+    }
+  ]
+}

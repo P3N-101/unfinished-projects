@@ -1,0 +1,238 @@
+cmp_Menu_Vertical As CanvasComponent:
+    ControlsTheme: |-
+        =// PASTE THE NAME OF YOUR THEME RECORD HERE - ie 'ControlsTheme'
+        // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+        //
+        // You can either pass a record in below that contains the values or the record itself.
+        // If you are listing values, you do not need to input all records, only the used ones.
+        //
+        {
+            ButtonColor:                    cmp_Menu_Vertical.ThisTheme.Color2Text,
+            ButtonFill:                     cmp_Menu_Vertical.ThisTheme.Color2,
+            ButtonBorderColor:              cmp_Menu_Vertical.ThisTheme.Color1,
+            ButtonHoverColor:               ColorFade(cmp_Menu_Vertical.ThisTheme.Color2Text, 20%),
+            ButtonHoverFill:                ColorFade(cmp_Menu_Vertical.ThisTheme.Color2,     20%),
+            ButtonHoverBorderColor:         ColorFade(cmp_Menu_Vertical.ThisTheme.Color1,     20%),
+            ButtonPressedColor:             cmp_Menu_Vertical.ThisTheme.Color2,
+            ButtonPressedFill:              cmp_Menu_Vertical.ThisTheme.Color2Text,
+            ButtonPressedBorderColor:       cmp_Menu_Vertical.ThisTheme.Color2,
+            ButtonFont:                     cmp_Menu_Vertical.ThisTheme.Font,
+            ButtonFontSize:                 cmp_Menu_Vertical.FontSizes.TextEmphasis,
+            
+            ImageFill:                      Transparent,
+            ImageBorderColor:               Transparent,
+            ImageHoverFill:                 Transparent,
+            ImageHoverBorderColor:          Transparent,
+            ImagePressedFill:               Transparent,
+            ImagePressedBorderColor:        Transparent,
+        
+            GalleryFill:                    RGBA(0,0,0,0),
+            GalleryBorderColor:             cmp_Menu_Vertical.ThisTheme.Color2,
+        
+            IconFill:                       cmp_Menu_Vertical.ThisTheme.Color3,
+            IconHoverFill:                  cmp_Menu_Vertical.ThisTheme.Color2Text,
+            IconPressedFill:                cmp_Menu_Vertical.ThisTheme.Color1Text,
+            IconBackground:                 RGBA(0,0,0,0),
+            IconHoverBackground:            cmp_Menu_Vertical.ThisTheme.Color2,
+            IconPressedBackground:          cmp_Menu_Vertical.ThisTheme.Color1,
+            IconBorderColor:                ColorFade(cmp_Menu_Vertical.ThisTheme.Color3, -20%),
+            IconHoverBorderColor:           cmp_Menu_Vertical.ThisTheme.Color3,
+            IconPressedBorderColor:         ColorFade(cmp_Menu_Vertical.ThisTheme.Color3, -40%)
+        }
+    Fill: =RGBA(0, 0, 0, 0)
+    Flat: =false
+    FontSizes: |-
+        =// PASTE THE NAME OF YOUR FONT SIZES RECORD HERE - ie 'FontSizes'
+        // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+        {
+            TextMain:                       cmp_Menu_Vertical.ThisTheme.FontSize -1,
+            TextEmphasis:                   cmp_Menu_Vertical.ThisTheme.FontSize +1,
+            Content:                        cmp_Menu_Vertical.ThisTheme.FontSize +2,
+            Title:                          cmp_Menu_Vertical.ThisTheme.FontSize +6,
+            SubTitle:                       cmp_Menu_Vertical.ThisTheme.FontSize +4,
+            AddPicture:                     cmp_Menu_Vertical.ThisTheme.FontSize -3
+        }
+    Height: =640
+    ItemsList: |-
+        =// PASTE THE NAME OF YOUR MENU TABLE HERE - ie 'MenuItems'
+        // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+        //
+        // You can either pass a table in below that contains the values or the table itself.
+        // If you are listing values, you do not need to input all records within the table, only the used ones.
+        // ie below I have only passed in the values used by my component
+        Table(
+             {
+                 Name:    "Home",
+                 Tooltip: "Click here to return to the Home Screen",
+                 Icon:    Icon.Home,
+                 Screen: App.ActiveScreen
+             },
+             {
+                 Name:    "New",
+                 Tooltip: "Click here to create a New Item",
+                 Icon:    Icon.Add,
+                 Screen: App.ActiveScreen
+             },
+             {
+                 Name:    "Settings",
+                 Tooltip: "Click here to access the App Settings",
+                 Icon:    Icon.Settings,
+                 Screen: App.ActiveScreen
+             }
+             
+        )
+    TabHighlightColor: |-
+        ="#FFFFFF"
+    ThisTheme: |-
+        =// PASTE THE NAME OF YOUR THEME RECORD HERE - ie 'ThisTheme'
+        // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+        //
+        // You can either pass a record in below that contains the values or the record itself.
+        // If you are listing values, you do not need to input all records, only the used ones.
+        // ie below I have only passed in the values used by my component
+        {
+                Color1:                    RGBA(186, 202, 226, 1),
+                Color2:                    RGBA( 56,  96, 178, 1),
+                Color3:                    RGBA(  0,  18, 107, 1),
+                Color1Text:                RGBA( 15,  15,  15, 1),
+                Color2Text:                RGBA(245, 245, 245, 1),
+                Color3Text:                RGBA(245, 245, 245, 1),
+                Font:                      Font.'Segoe UI',
+                FontSize:                  14,
+                DarkMode:                  false
+        }
+    Width: =123
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    html_BackgroundPanelDropshadow_cmp_Menu As htmlViewer:
+        Height: =Parent.Height
+        HtmlText: |-
+            =If(cmp_Menu_Vertical.Flat,
+               "",
+               "<div style='
+                    margin: 0px;
+                    width: " & Parent.Width  -RoundDown(btn_MiddlePanel_cmpMenu.X,0) 
+                                             -RoundDown(btn_MiddlePanel_cmpMenu.X,0) 
+                                             -RoundDown(btn_MiddlePanel_cmpMenu.X,0)
+                                             -RoundDown(btn_MiddlePanel_cmpMenu.X,0)
+                                             -RoundDown(btn_MiddlePanel_cmpMenu.X,0)
+                                             & "px;
+                    height: " & Parent.Height-RoundDown(btn_MiddlePanel_cmpMenu.X,0) 
+                                             -RoundDown(btn_MiddlePanel_cmpMenu.X,0) 
+                                             -RoundDown(btn_MiddlePanel_cmpMenu.X,0)
+                                             -RoundDown(btn_MiddlePanel_cmpMenu.X,0)
+                                             -RoundDown(btn_MiddlePanel_cmpMenu.X,0)
+                                             & "px;
+                    border-radius: 10px;
+                    box-shadow: " & RoundDown(btn_MiddlePanel_cmpMenu.X,0) & "px "
+                                  & RoundDown(btn_MiddlePanel_cmpMenu.X,0) & "px "
+                                  & RoundDown(btn_MiddlePanel_cmpMenu.X,0) & "px "
+                                  & If(cmp_Menu_Vertical.ThisTheme.DarkMode, "#CCCCCC" , "#444444") & "'>
+                </div>"
+            )
+        PaddingRight: =15.69
+        PaddingTop: =15.69
+        Size: =34.51
+        Visible: =!cmp_Menu_Vertical.Flat
+        Width: =385.89
+        X: =0.00
+        Y: =0*0
+        ZIndex: =1
+
+    btn_MiddlePanel_cmpMenu As button:
+        BorderColor: =cmp_Menu_Vertical.ControlsTheme.ButtonBorderColor
+        BorderThickness: =If(cmp_Menu_Vertical.Flat, 0, 2)
+        Color: =cmp_Menu_Vertical.ControlsTheme.ButtonColor
+        Fill: =cmp_Menu_Vertical.ControlsTheme.ButtonFill
+        Font: =cmp_Menu_Vertical.ControlsTheme.ButtonFont
+        Height: =MenuGallery_Vert.Height
+        HoverBorderColor: =cmp_Menu_Vertical.ControlsTheme.ButtonHoverBorderColor
+        HoverColor: =cmp_Menu_Vertical.ControlsTheme.ButtonHoverColor
+        HoverFill: =cmp_Menu_Vertical.ControlsTheme.ButtonHoverFill
+        PaddingRight: =31.36
+        PaddingTop: =31.36
+        PressedBorderColor: =cmp_Menu_Vertical.ControlsTheme.ButtonPressedBorderColor
+        PressedColor: =cmp_Menu_Vertical.ControlsTheme.ButtonPressedColor
+        PressedFill: =cmp_Menu_Vertical.ControlsTheme.ButtonPressedFill
+        Size: =47.05
+        TabIndex: =-1
+        Text: =""
+        Width: =348.22
+        X: =9.42
+        Y: =MenuGallery_Vert.Y
+        ZIndex: =2
+
+    "MenuGallery_Vert As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver4.0'":
+        AccessibleLabel: ="vertical navigation gallery for screens"
+        BorderColor: =cmp_Menu_Vertical.ControlsTheme.GalleryBorderColor
+        Fill: =cmp_Menu_Vertical.ControlsTheme.GalleryFill
+        Height: =Parent.Height-If(cmp_Menu_Vertical.Flat, 0, (Self.X*4))
+        Items: =cmp_Menu_Vertical.ItemsList
+        Layout: =Layout.Vertical
+        ShowScrollbar: =false
+        TemplatePadding: =0
+        TemplateSize: =If(CountRows(cmp_Menu_Vertical.ItemsList)>0, Self.Height/(CountRows(cmp_Menu_Vertical.ItemsList)), 1)
+        Width: =348.22
+        X: =9.42
+        Y: =Self.X
+        ZIndex: =3
+
+        btn_SelectedItem_MenuGallery_Vert As button:
+            BorderColor: =Transparent
+            Color: =Transparent
+            DisplayMode: =DisplayMode.View
+            Fill: =ColorValue(cmp_Menu_Vertical.TabHighlightColor)
+            Font: =Font.'Segoe UI'
+            Height: =RoundDown((Parent.TemplateHeight) * 80%, 0)
+            HoverBorderColor: =Transparent
+            HoverColor: =Transparent
+            HoverFill: =Transparent
+            OnSelect: =
+            PaddingRight: =31.36
+            PaddingTop: =31.36
+            PressedBorderColor: =Transparent
+            PressedColor: =Transparent
+            PressedFill: =Transparent
+            Size: =43.93
+            TabIndex: =-1
+            Text: ="Button"
+            Visible: =App.ActiveScreen = ThisItem.Screen
+            Width: =15.69
+            X: =34.51
+            Y: =RoundDown((Parent.TemplateHeight) * 10%, 0)
+            ZIndex: =1
+
+        ico_MenuIcon_Vert As icon.Add:
+            AccessibleLabel: ="navigate to " & ThisItem.Name
+            BorderColor: =cmp_Menu_Vertical.ControlsTheme.IconBorderColor
+            Color: =cmp_Menu_Vertical.ControlsTheme.ButtonColor
+            DisplayMode: =If(App.ActiveScreen = ThisItem.Screen, DisplayMode.Disabled, DisplayMode.Edit)
+            Fill: =cmp_Menu_Vertical.ControlsTheme.IconBackground
+            Height: =Parent.TemplateHeight * 90%
+            HoverBorderColor: =cmp_Menu_Vertical.ControlsTheme.ButtonHoverBorderColor
+            HoverColor: =cmp_Menu_Vertical.ControlsTheme.ButtonHoverColor
+            HoverFill: =cmp_Menu_Vertical.ControlsTheme.ButtonHoverFill
+            Icon: =ThisItem.Icon
+            OnSelect: |-
+                =//Select this item
+                Select(Parent);
+                //perform some other action?
+                //
+                //then navigate to screen
+                Navigate(ThisItem.Screen);
+            PaddingBottom: =(Parent.TemplateHeight) * 15%
+            PaddingLeft: =(Parent.TemplateWidth) * 15%
+            PaddingRight: =52.23
+            PaddingTop: =98.50
+            PressedBorderColor: =cmp_Menu_Vertical.ControlsTheme.IconPressedBorderColor
+            PressedColor: =cmp_Menu_Vertical.ControlsTheme.IconPressedFill
+            PressedFill: =cmp_Menu_Vertical.ControlsTheme.IconPressedBackground
+            TabIndex: =0
+            Tooltip: =ThisItem.Tooltip
+            Width: =313.40
+            X: =17.41
+            Y: =(Parent.TemplateHeight - Self.Height) * 50%
+            ZIndex: =3
+

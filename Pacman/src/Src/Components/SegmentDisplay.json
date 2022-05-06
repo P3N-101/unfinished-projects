@@ -1,0 +1,146 @@
+{
+  "ComponentAllowCustomization": true,
+  "ComponentChangedSinceFileImport": false,
+  "ComponentManifest": {
+    "AllowAccessToGlobals": false,
+    "AllowCustomization": true,
+    "Description": "",
+    "Name": "SegmentDisplay",
+    "TemplateGuid": "f65df224ce494ccca8a81fb4126564bc"
+  },
+  "ComponentType": "CanvasComponent",
+  "CustomGroupControlTemplateName": "",
+  "CustomProperties": [
+    {
+      "Category": 0,
+      "DisplayName": "sixteen_seg",
+      "Hidden": true,
+      "Name": "sixteen_seg",
+      "PropertyDataTypeKey": "String",
+      "PropertyScopeKey": {
+        "PropertyScopeRuleNamespaceKey": "35",
+        "PropertyScopeRulesKey": [
+          {
+            "DisplayName": "sixteen_seg_inputChar",
+            "Name": "sixteen_seg_inputChar",
+            "PropertyDataTypeKey": "String",
+            "ScopeVariableInfo": {
+              "DependencyType": "New",
+              "Description": "Single character",
+              "IsRequired": true,
+              "ResolveExpands": false,
+              "ResolveSelects": false,
+              "ScopeVariableName": "inputChar"
+            },
+            "Tooltip": "Single character",
+            "Type": "{\"Version\":\"1.324\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
+          },
+          {
+            "DisplayName": "sixteen_seg_darkcolor",
+            "Name": "sixteen_seg_darkcolor",
+            "PropertyDataTypeKey": "String",
+            "ScopeVariableInfo": {
+              "DependencyType": "New",
+              "Description": "Dark segment color in HEX (#444444)",
+              "IsRequired": true,
+              "ResolveExpands": false,
+              "ResolveSelects": false,
+              "ScopeVariableName": "darkcolor"
+            },
+            "Tooltip": "Dark segment color in HEX (#444444)",
+            "Type": "{\"Version\":\"1.324\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
+          },
+          {
+            "DisplayName": "sixteen_seg_glowcolor",
+            "Name": "sixteen_seg_glowcolor",
+            "PropertyDataTypeKey": "String",
+            "ScopeVariableInfo": {
+              "DependencyType": "New",
+              "Description": "Glow segment color in HEX (#00FF00)",
+              "IsRequired": true,
+              "ResolveExpands": false,
+              "ResolveSelects": false,
+              "ScopeVariableName": "glowcolor"
+            },
+            "Tooltip": "Glow segment color in HEX (#00FF00)",
+            "Type": "{\"Version\":\"1.324\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
+          }
+        ]
+      },
+      "Tooltip": "Return svg text for given single character",
+      "Type": "{\"Version\":\"1.324\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "seven_seg",
+      "Hidden": true,
+      "Name": "seven_seg",
+      "PropertyDataTypeKey": "String",
+      "PropertyScopeKey": {
+        "PropertyScopeRuleNamespaceKey": "35",
+        "PropertyScopeRulesKey": [
+          {
+            "DisplayName": "seven_seg_inputChar",
+            "Name": "seven_seg_inputChar",
+            "PropertyDataTypeKey": "String",
+            "ScopeVariableInfo": {
+              "DependencyType": "New",
+              "Description": "Single character",
+              "IsRequired": true,
+              "ResolveExpands": false,
+              "ResolveSelects": false,
+              "ScopeVariableName": "inputChar"
+            },
+            "Tooltip": "Single character",
+            "Type": "{\"Version\":\"1.324\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
+          },
+          {
+            "DisplayName": "seven_seg_darkcolor",
+            "Name": "seven_seg_darkcolor",
+            "PropertyDataTypeKey": "String",
+            "ScopeVariableInfo": {
+              "DependencyType": "New",
+              "Description": "Dark segment color in HEX (#444444)",
+              "IsRequired": true,
+              "ResolveExpands": false,
+              "ResolveSelects": false,
+              "ScopeVariableName": "darkcolor"
+            },
+            "Tooltip": "Dark segment color in HEX (#444444)",
+            "Type": "{\"Version\":\"1.324\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
+          },
+          {
+            "DisplayName": "seven_seg_glowcolor",
+            "Name": "seven_seg_glowcolor",
+            "PropertyDataTypeKey": "String",
+            "ScopeVariableInfo": {
+              "DependencyType": "New",
+              "Description": "Glow segment color in HEX (#00FF00)",
+              "IsRequired": true,
+              "ResolveExpands": false,
+              "ResolveSelects": false,
+              "ScopeVariableName": "glowcolor"
+            },
+            "Tooltip": "Glow segment color in HEX (#00FF00)",
+            "Type": "{\"Version\":\"1.324\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
+          }
+        ]
+      },
+      "Tooltip": "Return svg text for given number (Text)",
+      "Type": "{\"Version\":\"1.324\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
+    }
+  ],
+  "FirstParty": true,
+  "Id": "http://microsoft.com/appmagic/Component",
+  "IsComponentLocked": false,
+  "IsComponentTemplate": true,
+  "IsCustomGroupControlTemplate": false,
+  "IsPcfControl": false,
+  "IsPremiumPcfControl": false,
+  "IsWidgetTemplate": false,
+  "LastModifiedTimestamp": "637873443204575269",
+  "Name": "f65df224ce494ccca8a81fb4126564bc",
+  "OverridableProperties": {},
+  "TemplateOriginalName": "f63b525c146e49719ff8639df5a500ff",
+  "Version": "637662795819650038"
+}
