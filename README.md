@@ -14,6 +14,7 @@ I grew up with games like Pacman and it was one of my favourites so I decided th
 
 Whats provided:
 - PowerApps Canvas App built on v3 template from [Sancho Harker](https://twitter.com/iAm_ManCat)
+- [Documentation](Pacman/PensPlace%20Pacman-doc.md)
 
 Things to do:
 
