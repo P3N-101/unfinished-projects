@@ -4,6 +4,11 @@ PowerApps and Power Platform Solutions used for learning that I still haven't fi
 
 Welcome to my unfinished projects repository, these are projects I know I don't currently have time to complete. As many people have asked how these were done I have decided to share the apps I build to learn with, hope you learn something from them too.
 
+## Lava Lamp
+
+Just a little SVG Lava lamp..
+
+![Lava Lamp](assets/lavalamp.gif)
 ## PensPlace Pacman
 
 I wanted to learn how to manipulate and animate SVGs in canvas apps aas I believe there is huge potential in making pixel perfect canvas apps using SVGs, I use SVGs all the time and if you need an SVG icon there are over 14000 in the Icon Menu Builder.
