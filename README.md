@@ -12,6 +12,8 @@ Just a little SVG Lava lamp..
 
 I created this by taking the example on codepen by [Chris Gannon](https://codepen.io/chrisgannon/pen/QjKXXe)
 Used F12 Dev tools in Edge to work out what the javascript was updating in the DOM and the created timers to control the blobs moving up and down, and modified the image to use the dynamic values from the timers.
+
+This doesn't use SVG Animation, purely CSS and dynamic values.
 ## PensPlace Pacman
 
 I wanted to learn how to manipulate and animate SVGs in canvas apps aas I believe there is huge potential in making pixel perfect canvas apps using SVGs, I use SVGs all the time and if you need an SVG icon there are over 14000 in the Icon Menu Builder.
